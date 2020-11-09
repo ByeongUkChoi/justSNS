@@ -1,10 +1,12 @@
 # JUST SNS
 
 ## 개요
-4일 휴가 기간동안 java, spring boot 학습을 위해 게시판을 만들어 보려고 함  
+4일 휴가 기간 _(2020.11.09 - 2020.11.12)_ 동안 java, spring boot 학습을 위해 게시판을 만들어 보려고 함  
 계획을 매일매일 세우고 수정할 예정 ~~(애자일 방법론)~~  
+4일간의 개발 과정을 담기위해 유튜브 스트리밍, 동영상 저장 [![youtube](https://img.shields.io/badge/youtube-channel-red?logo=youtube)](https://www.youtube.com/playlist?list=PLkgj-h1OBMYo7kP6fpMCxt6SPOG-GoyWb)  
 api 서버를 만들고 시간 여유가 되면 front도 개발 예정  
 front end 프레임워크를 사용할지 그냥 할지 고민 중  
+
 
 ## 스펙
 java 11
