@@ -9,9 +9,9 @@ front end 프레임워크를 사용할지 그냥 할지 고민 중
 
 
 ## 스펙
-java 11
-spring boot 2.3.5
-mysql
+java 11  
+spring boot 2.3.5  
+mysql  
 
 ## 기능
 * 회원
@@ -26,6 +26,9 @@ mysql
     5. 게시글 삭제
     
 > 헤더에 bearer 토큰을 담아 전송  
+
+## 개발 일지
+[DevLog.md](https://github.com/ByeongUkChoi/justSNS/blob/main/DevLog.md)
 
 ## API Document
 ### 회원가입
