@@ -29,13 +29,16 @@ mysql
 
 ## 개발 일지
 [DevLog.md](https://github.com/ByeongUkChoi/justSNS/blob/main/DevLog.md)
+## 참조
+[spring-security-react-ant-design-polls-app](https://github.com/callicoder/spring-security-react-ant-design-polls-app)
 
+---
 ## API Document
 ### 회원가입
 #### Request
 ##### URL
 ```http request
-POST /members
+POST /auth/signup
 ```
 ##### Parameter
 |Name           |Type   |Description|Required|
@@ -48,11 +51,29 @@ POST /members
 ```http request
 HTTP/1.1 201 Created
 ```
+##### Parameter
+|Name           |Type   |Description|
+|---------------|-------|-----------|
+|username       |String |사용자 ID    |
+|name           |String |사용자 이름   |
+|email          |String |사용자 email |
+|createdAt      |timestamp|생성 시간|
+|updatedAt      |timestamp|수정 시간|
+##### example
+```json
+{
+    "username": "test01",
+    "name": "Byeonguk Choi",
+    "email": "test@test.com",
+    "created_at": "2020-11-09T07:55:30Z",
+    "updated_at": "2020-11-09T08:15:00Z"
+}
+```
 ### 로그인(토큰 발급)
 #### Request
 ##### URL
 ```http request
-POST /members/token
+POST /auth/signin
 ```
 ##### Parameter
 |Name           |Type   |Description|Required|
@@ -63,26 +84,12 @@ POST /members/token
 ```http request
 HTTP/1.1 200 OK
 ```
+##### Parameter
 |Name       |Type   |Description|
 |-----------|-------|-----------|
 |accessToken|String |토큰        |
 |expiresIn  |int    |토큰 유효 시간(초)|
-### 로그아웃(토큰 폐기)
-#### Request
-##### URL
-```http request
-DELETE /members/token
-```
-> 헤더에 토큰을 담겨 있는 토큰을 폐기 시킴  
-##### Parameter
-|Name           |Type   |Description|Required|
-|---------------|-------|-----------|--------|
-#### Response
-```http request
-HTTP/1.1 200 OK
-```
-|Name       |Type   |Description|
-|-----------|-------|-----------|
+
 ---
 ### 게시글 목록 조회  
 #### Request
@@ -99,6 +106,7 @@ GET /posts
 ```http request
 HTTP/1.1 200 OK
 ```
+##### Parameter
 |Name       |Type   |Description|
 |-----------|-------|-----------|
 |item       |array  |결과 목록|
@@ -156,13 +164,15 @@ POST /posts
 ```http request
 HTTP/1.1 201 Created
 ```
+##### Parameter
 |Name       |Type   |Description|
 |-----------|-------|-----------|
 |id         |int    |게시글 id|
 |subject    |String |게시글 id|
 |content    |String |게시글 본문|
 |authorId   |int    |게시글 작성자 id|
-|createdAt  |timestamp|게시글 시간|
+|createdAt  |timestamp|생성 시간|
+|updatedAt  |timestamp|수정 시간|
 ##### example
 ```json
 {
@@ -187,13 +197,15 @@ GET /posts/(:id)
 ```http request
 HTTP/1.1 200 OK
 ```
+##### Parameter
 |Name       |Type   |Description|
 |-----------|-------|-----------|
 |id         |int    |게시글 id|
 |subject    |String |게시글 id|
 |content    |String |게시글 본문|
 |authorId   |int    |게시글 작성자 id|
-|createdAt  |timestamp|게시글 시간|
+|createdAt  |timestamp|생성 시간|
+|updatedAt  |timestamp|수정 시간|
 ##### example
 ```json
 {
@@ -226,13 +238,15 @@ PATCH /posts/(:id)
 ```http request
 HTTP/1.1 200 OK
 ```
+##### Parameter
 |Name       |Type   |Description|
 |-----------|-------|-----------|
 |id         |int    |게시글 id|
 |subject    |String |게시글 id|
 |content    |String |게시글 본문|
 |authorId   |int    |게시글 작성자 id|
-|createdAt  |timestamp|게시글 시간|
+|createdAt  |timestamp|생성 시간|
+|updatedAt  |timestamp|수정 시간|
 ##### example
 ```json
 {
