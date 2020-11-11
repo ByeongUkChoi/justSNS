@@ -27,6 +27,14 @@ public class UserDto {
     }
 
     @Getter
+    public static class SignInRequest {
+        @NotBlank
+        private String username;
+        @NotBlank
+        private String password;
+    }
+
+    @Getter
     public static class Response {
         private String username;
         private String name;
