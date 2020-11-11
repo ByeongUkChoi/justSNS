@@ -184,7 +184,7 @@ HTTP/1.1 201 Created
     "updated_at": "2020-11-09T08:15:00Z"
 }
 ```
-### 게시글 보기
+### 게시글 상세 조회
 #### Request
 ##### URL
 ```http request

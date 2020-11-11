@@ -1,19 +1,31 @@
 package com.byeongukchoi.justSNS.controller;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.core.context.SecurityContext;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/posts")
 @RequiredArgsConstructor
 public class PostController {
-    @GetMapping("/test")
-    public String test() {
-        SecurityContext context = SecurityContextHolder.getContext();
-        return "test - success";
+    @GetMapping
+    public String getPosts() {
+        //SecurityContext context = SecurityContextHolder.getContext();
+        return "test - getPosts";
+    }
+    @GetMapping("/{postId}")
+    public String getPostById(@PathVariable long postId) {
+        return "test - getPostById : " + postId;
+    }
+    @PostMapping
+    public String createPost() {
+        return "test - createPost";
+    }
+    @PatchMapping
+    public String updatePost(@PathVariable long postId) {
+        return "test - updatePost : " + postId;
+    }
+    @DeleteMapping
+    public String deletePost(@PathVariable long postId) {
+        return "test - deletePost : " + postId;
     }
 }
