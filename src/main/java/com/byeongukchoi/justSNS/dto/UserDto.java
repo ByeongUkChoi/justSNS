@@ -45,8 +45,8 @@ public class UserDto {
             this.username = user.getUsername();
             this.name = user.getName();
             this.email = user.getEmail();
-            this.createdAt = user.getCreatedTimeAt();
-            this.updatedAt = user.getUpdateTimeAt();
+            this.createdAt = user.getCreatedAt();
+            this.updatedAt = user.getUpdatedAt();
         }
     }
 }

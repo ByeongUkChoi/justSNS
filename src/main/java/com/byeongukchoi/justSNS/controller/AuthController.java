@@ -24,12 +24,12 @@ public class AuthController {
     @PostMapping("/signup")
     @ResponseStatus(HttpStatus.CREATED)
     public UserDto.Response registerUser(@Valid @RequestBody UserDto.SignUpRequest signUpRequestDto) {
-        User user = service.signup(signUpRequestDto);
-        if (user == null) {
+        UserDto.Response userResponseDto = service.signup(signUpRequestDto);
+        if (userResponseDto == null) {
             // TODO: error
             return null;
         }
-        return new UserDto.Response(user);
+        return userResponseDto;
     }
     @PostMapping("/signin")
     public ResponseEntity<?> authenticateUser(@Valid @RequestBody UserDto.SignInRequest signInRequest) {

@@ -5,7 +5,6 @@ import com.byeongukchoi.justSNS.model.User;
 import com.byeongukchoi.justSNS.repository.UserRepository;
 import com.byeongukchoi.justSNS.security.JwtTokenProvider;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -22,7 +21,7 @@ public class AuthService {
     private final AuthenticationManager authenticationManager;
     private final JwtTokenProvider tokenProvider;
 
-    public User signup(UserDto.SignUpRequest signUpRequestDto) {
+    public UserDto.Response signup(UserDto.SignUpRequest signUpRequestDto) {
 
         // TODO: DB 제약조건 (unique key) 에러 예외 처리 필요
         User user = userRepository.save(
@@ -39,7 +38,7 @@ public class AuthService {
             throw new RuntimeException("test");
         }
 
-        return user;
+        return new UserDto.Response(user);
     }
     public String signin(UserDto.SignInRequest signInRequest) {
 

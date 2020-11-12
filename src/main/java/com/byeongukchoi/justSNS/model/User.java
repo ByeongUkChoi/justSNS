@@ -29,7 +29,7 @@ public class User {
     private String name;
     private String email;
     @CreationTimestamp
-    private LocalDateTime createdTimeAt;
+    private LocalDateTime createdAt;
     @UpdateTimestamp
-    private LocalDateTime updateTimeAt;
+    private LocalDateTime updatedAt;
 }
