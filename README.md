@@ -73,8 +73,8 @@ HTTP/1.1 201 Created
     "username": "test01",
     "name": "Byeonguk Choi",
     "email": "test@test.com",
-    "created_at": "2020-11-09T07:55:30Z",
-    "updated_at": "2020-11-09T08:15:00Z"
+    "createdAt": "2020-11-09T07:55:30Z",
+    "updatedAt": "2020-11-09T08:15:00Z"
 }
 ```
 ### 로그인(토큰 발급)
@@ -136,8 +136,8 @@ HTTP/1.1 200 OK
             "subject": "Test subject",
             "content": "This is...",
             "authorId": 1,
-            "created_at": "2020-11-09T07:55:30Z",
-            "updated_at": "2020-11-09T08:15:00Z"
+            "createdAt": "2020-11-09T07:55:30Z",
+            "updatedAt": "2020-11-09T08:15:00Z"
         }
     ],
     "page":
@@ -186,8 +186,8 @@ HTTP/1.1 201 Created
     "subject": "Test subject",
     "content": "This is...",
     "authorId": 1,
-    "created_at": "2020-11-09T07:55:30Z",
-    "updated_at": "2020-11-09T08:15:00Z"
+    "createdAt": "2020-11-09T07:55:30Z",
+    "updatedAt": "2020-11-09T08:15:00Z"
 }
 ```
 ### 게시글 상세 조회
@@ -219,8 +219,8 @@ HTTP/1.1 200 OK
     "subject": "Test subject",
     "content": "This is...",
     "authorId": 1,
-    "created_at": "2020-11-09T07:55:30Z",
-    "updated_at": "2020-11-09T08:15:00Z"
+    "createdAt": "2020-11-09T07:55:30Z",
+    "updatedAt": "2020-11-09T08:15:00Z"
 }
 ```
 ### 게시글 수정
@@ -260,8 +260,8 @@ HTTP/1.1 200 OK
     "subject": "Test subject - modified",
     "content": "This is...",
     "authorId": 1,
-    "created_at": "2020-11-09T07:55:30Z",
-    "updated_at": "2020-11-09T08:15:00Z"
+    "createdAt": "2020-11-09T07:55:30Z",
+    "updatedAt": "2020-11-09T08:15:00Z"
 }
 ```
 ### 게시글 삭제
