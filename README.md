@@ -7,6 +7,8 @@
 4일 간의 개발 과정을 담기위해 유튜브 스트리밍, 동영상 저장 [![youtube](https://img.shields.io/badge/youtube-channel-red?logo=youtube)](https://www.youtube.com/playlist?list=PLkgj-h1OBMYo7kP6fpMCxt6SPOG-GoyWb)  
 api 서버를 만들고 시간 여유가 되면 front도 개발 예정  
 front end 프레임워크를 사용할지 그냥 할지 고민 중  
+### 회고
+[4일 간의 작업 회고](https://unhosted.tistory.com/47)  
 ### 그 후
 아직 못 끝낸 작업들 및 보완 사항을 계속해서 추가할 예정  
 
