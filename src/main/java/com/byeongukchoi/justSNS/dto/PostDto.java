@@ -5,7 +5,7 @@ import lombok.Getter;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
-import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
 
 public class PostDto {
 
@@ -40,8 +40,8 @@ public class PostDto {
         private String subject;
         private String content;
         private long authorId;
-        private LocalDateTime createdAt;
-        private LocalDateTime updatedAt;
+        private ZonedDateTime createdAt;
+        private ZonedDateTime updatedAt;
 
         public Response(Post post) {
             this.id = post.getId();

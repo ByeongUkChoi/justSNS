@@ -6,7 +6,7 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
 
 @Entity
 @Getter
@@ -25,9 +25,9 @@ public class Post {
     @JoinColumn(name = "author_id")
     private User user;
     @CreationTimestamp
-    private LocalDateTime createdAt;
+    private ZonedDateTime createdAt;
     @UpdateTimestamp
-    private LocalDateTime updatedAt;
+    private ZonedDateTime updatedAt;
 
     public long getAuthorId() {
         return user.getId();

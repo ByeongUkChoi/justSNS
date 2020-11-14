@@ -5,7 +5,7 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
 
 @Entity
 @Getter
@@ -29,7 +29,7 @@ public class User {
     private String name;
     private String email;
     @CreationTimestamp
-    private LocalDateTime createdAt;
+    private ZonedDateTime createdAt;
     @UpdateTimestamp
-    private LocalDateTime updatedAt;
+    private ZonedDateTime updatedAt;
 }

@@ -1,12 +1,12 @@
 package com.byeongukchoi.justSNS.dto;
 
 import com.byeongukchoi.justSNS.model.User;
-import lombok.*;
+import lombok.Getter;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
-import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
 
 public class UserDto {
     @Getter
@@ -39,8 +39,8 @@ public class UserDto {
         private String username;
         private String name;
         private String email;
-        private LocalDateTime createdAt;
-        private LocalDateTime updatedAt;
+        private ZonedDateTime createdAt;
+        private ZonedDateTime updatedAt;
         public Response(User user) {
             this.username = user.getUsername();
             this.name = user.getName();
