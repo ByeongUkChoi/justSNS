@@ -16,6 +16,7 @@ import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.security.access.AuthorizationServiceException;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.List;
 import java.util.Optional;
 
@@ -28,17 +29,16 @@ public class PostService {
 
     public PostDto.Response createPost(PostDto.Create postCreateDto, UserPrincipal userPrincipal) {
 
-        // get current user
-        Optional<User> optionalUser = userRepository.findById(userPrincipal.getId());
-        if (!optionalUser.isPresent()) {
-            throw new ResourceNotFoundException();
-        }
+        // get user entity
+        User user = userRepository.findById(userPrincipal.getId())
+                //.orElseThrow(() -> new ResourceNotFoundException());  // 람다식에서 생성자 레퍼런스로 아래 처럼 사용 가능
+                .orElseThrow(ResourceNotFoundException::new);   // Supplier 타입 반환 됨. 생성자 레퍼런스를 사용할 경우 lazy initialize 됨.
 
         // create post entity and save
         Post post = postRepository.save(Post.builder()
                 .subject(postCreateDto.getSubject())
                 .content(postCreateDto.getContent())
-                .user(optionalUser.get())
+                .user(user)
                 .build());
 
         return new PostDto.Response(post);
@@ -67,18 +67,12 @@ public class PostService {
     public PostDto.Response updatePost(PostDto.Update postUpdateDto, long postId, UserPrincipal userPrincipal) {
 
         // get user entity
-        Optional<User> optionalUser = userRepository.findById(userPrincipal.getId());
-        if (!optionalUser.isPresent()) {
-            throw new ResourceNotFoundException();
-        }
-        User user = optionalUser.get();
+        User user = userRepository.findById(userPrincipal.getId())
+                .orElseThrow(ResourceNotFoundException::new);
 
         // get post entity
-        Optional<Post> optionalPost = postRepository.findById(postId);
-        if(!optionalPost.isPresent()) {
-            throw new ResourceNotFoundException();
-        }
-        Post post = optionalPost.get();
+        Post post = postRepository.findById(postId)
+                .orElseThrow(ResourceNotFoundException::new);
 
         // valid author
         verifyAuthor(post, user);
@@ -93,18 +87,12 @@ public class PostService {
 
     public void deletePost(long postId, UserPrincipal userPrincipal) {
         // get user entity
-        Optional<User> optionalUser = userRepository.findById(userPrincipal.getId());
-        if (!optionalUser.isPresent()) {
-            throw new ResourceNotFoundException();
-        }
-        User user = optionalUser.get();
+        User user = userRepository.findById(userPrincipal.getId())
+                .orElseThrow(ResourceNotFoundException::new);
 
         // get post entity
-        Optional<Post> optionalPost = postRepository.findById(postId);
-        if(!optionalPost.isPresent()) {
-            throw new ResourceNotFoundException();
-        }
-        Post post = optionalPost.get();
+        Post post = postRepository.findById(postId)
+                .orElseThrow(ResourceNotFoundException::new);
 
         // valid author
         verifyAuthor(post, user);
