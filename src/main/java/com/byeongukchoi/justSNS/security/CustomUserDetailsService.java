@@ -10,8 +10,6 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Optional;
-
 @Service
 @RequiredArgsConstructor
 public class CustomUserDetailsService implements UserDetailsService {
@@ -28,11 +26,8 @@ public class CustomUserDetailsService implements UserDetailsService {
     }
     @Transactional
     public UserDetails loadUserById(Long id) {
-        Optional<User> optionalUser = userRepository.findById(id);
-        if (optionalUser.isPresent()) {
-            return UserPrincipal.create(optionalUser.get());
-        }
-        //throw new ResourceNotFoundException("User", "id", id);
-        throw new ResourceNotFoundException();
+        User user = userRepository.findById(id)
+                .orElseThrow(ResourceNotFoundException::new);
+        return UserPrincipal.create(user);
     }
 }
