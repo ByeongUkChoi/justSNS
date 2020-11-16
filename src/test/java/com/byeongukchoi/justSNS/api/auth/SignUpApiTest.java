@@ -1,14 +1,9 @@
 package com.byeongukchoi.justSNS.api.auth;
 
 import com.byeongukchoi.justSNS.dto.UserDto;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.junit.jupiter.api.Test;
-import org.mockito.MockitoAnnotations;
-import org.skyscreamer.jsonassert.JSONAssert;
-import org.skyscreamer.jsonassert.JSONCompareMode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
@@ -25,10 +20,10 @@ public class SignUpApiTest {
     private TestRestTemplate restTemplate;
 
     static final String url = "/auth/signup";
-    static final String USERNAME = "test01";
+    static final String USERNAME = "test-test";
     static final String PASSWORD = "password01";
     static final String NAME = "Byeonguk Choi";
-    static final String EMAIL = "test@test.com";
+    static final String EMAIL = "test-test@test.com";
 
     @Test
     public void success() throws JSONException {
