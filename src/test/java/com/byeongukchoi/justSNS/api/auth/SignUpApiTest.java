@@ -4,6 +4,8 @@ import com.byeongukchoi.justSNS.dto.UserDto;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.junit.jupiter.api.Test;
+import org.skyscreamer.jsonassert.JSONAssert;
+import org.skyscreamer.jsonassert.JSONCompareMode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
@@ -43,7 +45,7 @@ public class SignUpApiTest {
         expected.put("name", NAME);
         expected.put("email", EMAIL);
 
-        //JSONAssert.assertEquals(expected, actual, JSONCompareMode.LENIENT);
+        JSONAssert.assertEquals(expected, actual, JSONCompareMode.LENIENT);
         assertThat(HttpStatus.CREATED).isEqualTo(response.getStatusCode());
     }
 
