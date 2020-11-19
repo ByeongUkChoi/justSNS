@@ -12,7 +12,7 @@ import java.time.ZonedDateTime;
 @Getter
 @Setter
 @Builder
-@NoArgsConstructor(access = AccessLevel.PRIVATE)  // jpa에서 findById시 default constructor가 없다고 나옴    getOne의 경우 public, protected or package-private 필요
+@NoArgsConstructor(access = AccessLevel.PROTECTED)  // jpa에서 findById시 default constructor가 없다고 나옴    getOne의 경우 public, protected or package-private 필요
 @AllArgsConstructor(access = AccessLevel.PRIVATE)   // noArgsConstructor가 있기 때문에 builder를 사용하기 위해 필요
 @Table(name = "posts")
 public class Post {

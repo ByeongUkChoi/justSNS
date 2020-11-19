@@ -3,7 +3,6 @@ package com.byeongukchoi.justSNS.security;
 import com.byeongukchoi.justSNS.model.User;
 import com.byeongukchoi.justSNS.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -27,7 +26,8 @@ public class CustomUserDetailsService implements UserDetailsService {
     @Transactional
     public UserDetails loadUserById(Long id) {
         User user = userRepository.findById(id)
-                .orElseThrow(ResourceNotFoundException::new);
+                //.orElseThrow(ResourceNotFoundException::new);
+                .orElseThrow(RuntimeException::new);
         return UserPrincipal.create(user);
     }
 }

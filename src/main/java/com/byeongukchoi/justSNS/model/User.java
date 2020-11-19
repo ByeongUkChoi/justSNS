@@ -1,5 +1,6 @@
 package com.byeongukchoi.justSNS.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -10,8 +11,8 @@ import java.time.ZonedDateTime;
 @Entity
 @Getter
 @Builder
+@NoArgsConstructor(access = AccessLevel.PROTECTED)  // jpa에서 생성 하기 위해
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
-@NoArgsConstructor(access = AccessLevel.PRIVATE)  // jpa에서 생성 하기 위해
 @Table(name = "users", uniqueConstraints = {
         @UniqueConstraint(columnNames = {
                 "username"
@@ -25,6 +26,7 @@ public class User {
     @GeneratedValue
     private long id;
     private String username;
+    @JsonIgnore
     private String password;
     private String name;
     private String email;

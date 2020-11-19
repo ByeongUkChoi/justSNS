@@ -22,13 +22,29 @@ public class PostController {
     @GetMapping
     public PagedResponse getPosts(@RequestParam(value = "page", defaultValue = AppConstants.DEFAULT_PAGE_NUMBER) int pageNumber,
                                           @RequestParam(value = "size", defaultValue = AppConstants.DEFAULT_PAGE_SIZE) int size) {
-
         return service.getPosts(pageNumber, size);
     }
     @GetMapping("/{postId}")
     public PostDto.Response getPostById(@PathVariable long postId) {
+        PostDto.Response post = service.getPostById(postId);
         return service.getPostById(postId);
     }
+//    @GetMapping("/{postId}")
+//    public EntityModel<PostDto.Response> getPostById(@PathVariable long postId) {
+//        PostDto.Response post = service.getPostById(postId);
+//        EntityModel<PostDto.Response> employees = EntityModel.of(post,
+//                linkTo(methodOn(PostController.class).getPostById(postId)).withSelfRel());
+//        return employees;
+//    }
+//    @GetMapping("/{postId}")
+//    public PostDto.ResponseModel getPostById(@PathVariable long postId) {
+//        PostDto.Response response = service.getPostById(postId);
+//        PostDto.ResponseModel responseModel = new PostDto.ResponseModel(response);
+//        Link abc = Link.of("abc");
+//        responseModel.add(abc);
+//
+//        return responseModel;
+//    }
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public PostDto.Response createPost(@CurrentUser UserPrincipal userPrincipal,
