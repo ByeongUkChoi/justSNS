@@ -15,7 +15,7 @@ public class RootController {
         RepresentationModel model = new RepresentationModel();
 
         model.add(linkTo(methodOn(RootController.class).root()).withSelfRel());
-        model.add(linkTo(methodOn(PostController.class).getPosts(0, 20)).withRel("getPosts"));
+        model.add(linkTo(methodOn(PostController.class).getPosts(0, 20)).withRel("posts"));
 
         return model;
     }

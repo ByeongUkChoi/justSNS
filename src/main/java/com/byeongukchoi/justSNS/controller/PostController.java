@@ -7,10 +7,14 @@ import com.byeongukchoi.justSNS.security.UserPrincipal;
 import com.byeongukchoi.justSNS.service.PostService;
 import com.byeongukchoi.justSNS.util.AppConstants;
 import lombok.RequiredArgsConstructor;
+import org.springframework.hateoas.EntityModel;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
 @RestController
 @RequestMapping("/posts")
@@ -24,18 +28,21 @@ public class PostController {
                                           @RequestParam(value = "size", defaultValue = AppConstants.DEFAULT_PAGE_SIZE) int size) {
         return service.getPosts(pageNumber, size);
     }
-    @GetMapping("/{postId}")
-    public PostDto.Response getPostById(@PathVariable long postId) {
-        PostDto.Response post = service.getPostById(postId);
-        return service.getPostById(postId);
-    }
+
+//    원본
 //    @GetMapping("/{postId}")
-//    public EntityModel<PostDto.Response> getPostById(@PathVariable long postId) {
+//    public PostDto.Response getPostById(@PathVariable long postId) {
 //        PostDto.Response post = service.getPostById(postId);
-//        EntityModel<PostDto.Response> employees = EntityModel.of(post,
-//                linkTo(methodOn(PostController.class).getPostById(postId)).withSelfRel());
-//        return employees;
+//        return service.getPostById(postId);
 //    }
+    @GetMapping("/{postId}")
+    public EntityModel<PostDto.Response> getPostById(@PathVariable long postId) {
+        PostDto.Response post = service.getPostById(postId);
+        EntityModel<PostDto.Response> entityModel = EntityModel.of(post,
+                linkTo(methodOn(PostController.class).getPostById(postId)).withSelfRel(),
+                linkTo(methodOn(PostController.class).getPosts(0, 20)).withRel("posts"));
+        return entityModel;
+    }
 //    @GetMapping("/{postId}")
 //    public PostDto.ResponseModel getPostById(@PathVariable long postId) {
 //        PostDto.Response response = service.getPostById(postId);
