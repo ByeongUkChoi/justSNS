@@ -51,7 +51,6 @@ public class SignUpApiTest {
 
     @Test
     public void missingRequiredParams() {
-        final String url = "/auth/signup";
         UserDto.SignUpRequest signUpRequest = new UserDto.SignUpRequest();
         ReflectionTestUtils.setField(signUpRequest, "username", USERNAME);
         ReflectionTestUtils.setField(signUpRequest, "password", PASSWORD);
