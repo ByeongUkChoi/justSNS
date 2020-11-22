@@ -21,11 +21,11 @@ public class SignUpApiTest {
     @Autowired
     private TestRestTemplate restTemplate;
 
-    static final String url = "/auth/signup";
-    static final String USERNAME = "test-test";
-    static final String PASSWORD = "password01";
-    static final String NAME = "Byeonguk Choi";
-    static final String EMAIL = "test-test@test.com";
+    private static final String url = "/auth/signup";
+    private static final String USERNAME = "test-test";
+    private static final String PASSWORD = "password01";
+    private static final String NAME = "Byeonguk Choi";
+    private static final String EMAIL = "test-test@test.com";
 
     @Test
     public void success() throws JSONException {

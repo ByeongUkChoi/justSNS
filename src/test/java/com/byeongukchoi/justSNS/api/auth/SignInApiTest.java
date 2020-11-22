@@ -18,9 +18,9 @@ public class SignInApiTest {
     @Autowired
     private TestRestTemplate restTemplate;
 
-    static final String url = "/auth/signin";
-    static final String USERNAME = "test01";
-    static final String PASSWORD = "password01";
+    private static final String url = "/auth/signin";
+    private static final String USERNAME = "test01";
+    private static final String PASSWORD = "password01";
 
     @Test
     public void success() throws JSONException {
