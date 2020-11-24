@@ -1,7 +1,5 @@
 package com.byeongukchoi.justSNS.api.post;
 
-import org.json.JSONException;
-import org.json.JSONObject;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -9,8 +7,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.http.*;
 import org.springframework.security.test.context.support.WithMockUser;
-
-import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -24,7 +20,7 @@ public class getPostsTest {
 
     @Test
     @WithMockUser(username = "test0101")
-    public void success() throws JSONException {
+    public void success() {
 
         final HttpHeaders headers = new HttpHeaders();
         // TODO: 공통 함수 혹은 intercepter사용. 토큰은 환경 변수로 분리
