@@ -36,7 +36,7 @@ public class PostService {
         Post post = postRepository.save(Post.builder()
                 .subject(postCreateDto.getSubject())
                 .content(postCreateDto.getContent())
-                .user(user)
+                .authorId(user.getId())
                 .build());
 
         return new PostDto.Response(post);
