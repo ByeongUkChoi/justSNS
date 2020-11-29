@@ -1,7 +1,7 @@
 package com.byeongukchoi.justSNS.service;
 
 import com.byeongukchoi.justSNS.dto.UserDto;
-import com.byeongukchoi.justSNS.model.User;
+import com.byeongukchoi.justSNS.domain.User;
 import com.byeongukchoi.justSNS.repository.UserRepository;
 import com.byeongukchoi.justSNS.security.JwtTokenProvider;
 import lombok.RequiredArgsConstructor;

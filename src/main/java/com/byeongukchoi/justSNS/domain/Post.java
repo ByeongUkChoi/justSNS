@@ -1,4 +1,4 @@
-package com.byeongukchoi.justSNS.model;
+package com.byeongukchoi.justSNS.domain;
 
 import com.byeongukchoi.justSNS.dto.PostDto;
 import lombok.*;

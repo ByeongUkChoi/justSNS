@@ -1,6 +1,6 @@
 package com.byeongukchoi.justSNS.dto;
 
-import com.byeongukchoi.justSNS.model.User;
+import com.byeongukchoi.justSNS.domain.User;
 import lombok.Getter;
 
 import javax.validation.constraints.Email;

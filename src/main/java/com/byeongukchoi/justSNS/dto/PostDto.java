@@ -1,6 +1,6 @@
 package com.byeongukchoi.justSNS.dto;
 
-import com.byeongukchoi.justSNS.model.Post;
+import com.byeongukchoi.justSNS.domain.Post;
 import lombok.Getter;
 
 import javax.validation.constraints.NotBlank;
