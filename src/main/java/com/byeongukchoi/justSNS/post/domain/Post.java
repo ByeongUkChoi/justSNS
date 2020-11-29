@@ -1,6 +1,6 @@
-package com.byeongukchoi.justSNS.domain;
+package com.byeongukchoi.justSNS.post.domain;
 
-import com.byeongukchoi.justSNS.dto.PostDto;
+import com.byeongukchoi.justSNS.post.dto.PostDto;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;

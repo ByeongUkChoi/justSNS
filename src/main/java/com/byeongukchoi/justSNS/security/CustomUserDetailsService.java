@@ -1,7 +1,7 @@
 package com.byeongukchoi.justSNS.security;
 
-import com.byeongukchoi.justSNS.domain.User;
-import com.byeongukchoi.justSNS.repository.UserRepository;
+import com.byeongukchoi.justSNS.user.domain.User;
+import com.byeongukchoi.justSNS.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

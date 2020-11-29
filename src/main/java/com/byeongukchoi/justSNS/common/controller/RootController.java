@@ -1,5 +1,6 @@
-package com.byeongukchoi.justSNS.controller;
+package com.byeongukchoi.justSNS.common.controller;
 
+import com.byeongukchoi.justSNS.post.controller.PostController;
 import org.springframework.hateoas.RepresentationModel;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;

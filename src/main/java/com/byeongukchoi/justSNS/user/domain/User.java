@@ -1,4 +1,4 @@
-package com.byeongukchoi.justSNS.domain;
+package com.byeongukchoi.justSNS.user.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;

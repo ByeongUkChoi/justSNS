@@ -1,4 +1,4 @@
-package com.byeongukchoi.justSNS.dto;
+package com.byeongukchoi.justSNS.common.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

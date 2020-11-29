@@ -1,6 +1,6 @@
-package com.byeongukchoi.justSNS.repository;
+package com.byeongukchoi.justSNS.user.repository;
 
-import com.byeongukchoi.justSNS.domain.User;
+import com.byeongukchoi.justSNS.user.domain.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

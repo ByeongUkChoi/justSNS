@@ -1,7 +1,7 @@
-package com.byeongukchoi.justSNS.controller;
+package com.byeongukchoi.justSNS.user.controller;
 
-import com.byeongukchoi.justSNS.dto.UserDto;
-import com.byeongukchoi.justSNS.service.AuthService;
+import com.byeongukchoi.justSNS.user.dto.UserDto;
+import com.byeongukchoi.justSNS.user.service.AuthService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

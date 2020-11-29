@@ -1,6 +1,6 @@
 package com.byeongukchoi.justSNS.security;
 
-import com.byeongukchoi.justSNS.domain.User;
+import com.byeongukchoi.justSNS.user.domain.User;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Builder;
 import lombok.Getter;

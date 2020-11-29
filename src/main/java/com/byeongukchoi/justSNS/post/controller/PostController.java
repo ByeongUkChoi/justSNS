@@ -1,11 +1,11 @@
-package com.byeongukchoi.justSNS.controller;
+package com.byeongukchoi.justSNS.post.controller;
 
-import com.byeongukchoi.justSNS.dto.PagedResponse;
-import com.byeongukchoi.justSNS.dto.PostDto;
+import com.byeongukchoi.justSNS.common.dto.PagedResponse;
+import com.byeongukchoi.justSNS.post.dto.PostDto;
 import com.byeongukchoi.justSNS.security.CurrentUser;
 import com.byeongukchoi.justSNS.security.UserPrincipal;
-import com.byeongukchoi.justSNS.service.PostService;
-import com.byeongukchoi.justSNS.util.AppConstants;
+import com.byeongukchoi.justSNS.post.service.PostService;
+import com.byeongukchoi.justSNS.common.util.AppConstants;
 import lombok.RequiredArgsConstructor;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.http.HttpStatus;

@@ -1,8 +1,8 @@
-package com.byeongukchoi.justSNS.service;
+package com.byeongukchoi.justSNS.user.service;
 
-import com.byeongukchoi.justSNS.dto.UserDto;
-import com.byeongukchoi.justSNS.domain.User;
-import com.byeongukchoi.justSNS.repository.UserRepository;
+import com.byeongukchoi.justSNS.user.dto.UserDto;
+import com.byeongukchoi.justSNS.user.domain.User;
+import com.byeongukchoi.justSNS.user.repository.UserRepository;
 import com.byeongukchoi.justSNS.security.JwtTokenProvider;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;

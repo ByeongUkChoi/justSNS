@@ -1,11 +1,11 @@
-package com.byeongukchoi.justSNS.service;
+package com.byeongukchoi.justSNS.post.service;
 
-import com.byeongukchoi.justSNS.dto.PagedResponse;
-import com.byeongukchoi.justSNS.dto.PostDto;
-import com.byeongukchoi.justSNS.domain.Post;
-import com.byeongukchoi.justSNS.domain.User;
-import com.byeongukchoi.justSNS.repository.PostRepository;
-import com.byeongukchoi.justSNS.repository.UserRepository;
+import com.byeongukchoi.justSNS.common.dto.PagedResponse;
+import com.byeongukchoi.justSNS.post.dto.PostDto;
+import com.byeongukchoi.justSNS.post.domain.Post;
+import com.byeongukchoi.justSNS.user.domain.User;
+import com.byeongukchoi.justSNS.post.repository.PostRepository;
+import com.byeongukchoi.justSNS.user.repository.UserRepository;
 import com.byeongukchoi.justSNS.security.UserPrincipal;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;

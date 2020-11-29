@@ -1,4 +1,4 @@
-package com.byeongukchoi.justSNS.util;
+package com.byeongukchoi.justSNS.common.util;
 
 public final class AppConstants {
     public static final String DEFAULT_PAGE_NUMBER = "0";

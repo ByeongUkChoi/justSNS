@@ -1,6 +1,6 @@
 package com.byeongukchoi.justSNS.api.auth;
 
-import com.byeongukchoi.justSNS.dto.UserDto;
+import com.byeongukchoi.justSNS.user.dto.UserDto;
 import org.json.JSONException;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
