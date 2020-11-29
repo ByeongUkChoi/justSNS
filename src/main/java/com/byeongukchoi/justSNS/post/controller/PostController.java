@@ -64,7 +64,7 @@ public class PostController {
                                        @PathVariable long postId) {
         return service.updatePost(postUpdateDto, postId, userPrincipal);
     }
-    @DeleteMapping
+    @DeleteMapping("/{postId}")
     public void deletePost(@CurrentUser UserPrincipal userPrincipal,
                              @PathVariable long postId) {
         service.deletePost(postId, userPrincipal);

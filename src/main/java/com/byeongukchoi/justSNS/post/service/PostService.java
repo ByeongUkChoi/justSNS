@@ -1,6 +1,7 @@
 package com.byeongukchoi.justSNS.post.service;
 
 import com.byeongukchoi.justSNS.common.dto.PagedResponse;
+import com.byeongukchoi.justSNS.post.domain.PostContent;
 import com.byeongukchoi.justSNS.post.dto.PostDto;
 import com.byeongukchoi.justSNS.post.domain.Post;
 import com.byeongukchoi.justSNS.user.domain.User;
@@ -32,12 +33,7 @@ public class PostService {
                 //.orElseThrow(ResourceNotFoundException::new);   // Supplier 타입 반환 됨. 생성자 레퍼런스를 사용할 경우 lazy initialize 됨.
                 .orElseThrow(RuntimeException::new);   // Supplier 타입 반환 됨. 생성자 레퍼런스를 사용할 경우 lazy initialize 됨.
 
-        // create post entity and save
-        Post post = postRepository.save(Post.builder()
-                .subject(postCreateDto.getSubject())
-                .content(postCreateDto.getContent())
-                .authorId(user.getId())
-                .build());
+        Post post = postRepository.save(postCreateDto.toEntity(user.getId()));
 
         return new PostDto.Response(post);
     }

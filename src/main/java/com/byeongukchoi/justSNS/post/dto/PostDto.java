@@ -1,6 +1,7 @@
 package com.byeongukchoi.justSNS.post.dto;
 
 import com.byeongukchoi.justSNS.post.domain.Post;
+import com.byeongukchoi.justSNS.post.domain.PostContent;
 import lombok.Getter;
 
 import javax.validation.constraints.NotBlank;
@@ -17,6 +18,20 @@ public class PostDto {
         @NotBlank
         @Size(max = 255)
         private String content;
+
+        public Post toEntity() {
+            return Post.builder()
+                    .subject(subject)
+                    .content(new PostContent(content))
+                    .build();
+        }
+        public Post toEntity(long userId) {
+            return Post.builder()
+                    .subject(subject)
+                    .content(new PostContent(content))
+                    .authorId(userId)
+                    .build();
+        }
     }
     @Getter
     public static class Update {
