@@ -1,13 +1,12 @@
 package com.byeongukchoi.justSNS.post.service;
 
 import com.byeongukchoi.justSNS.common.dto.PagedResponse;
-import com.byeongukchoi.justSNS.post.domain.PostContent;
-import com.byeongukchoi.justSNS.post.dto.PostDto;
 import com.byeongukchoi.justSNS.post.domain.Post;
-import com.byeongukchoi.justSNS.user.domain.User;
+import com.byeongukchoi.justSNS.post.dto.PostDto;
 import com.byeongukchoi.justSNS.post.repository.PostRepository;
-import com.byeongukchoi.justSNS.user.repository.UserRepository;
 import com.byeongukchoi.justSNS.security.UserPrincipal;
+import com.byeongukchoi.justSNS.user.domain.User;
+import com.byeongukchoi.justSNS.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -16,7 +15,10 @@ import org.springframework.data.domain.Sort;
 import org.springframework.security.access.AuthorizationServiceException;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.Converter;
+import java.lang.annotation.Annotation;
 import java.util.List;
+import java.util.stream.Stream;
 
 @Service
 @RequiredArgsConstructor
