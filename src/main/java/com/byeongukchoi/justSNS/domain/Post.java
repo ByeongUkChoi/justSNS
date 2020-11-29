@@ -5,7 +5,10 @@ import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.time.ZonedDateTime;
 
 @Entity
@@ -21,17 +24,11 @@ public class Post {
     private long id;
     private String subject;
     private String content;
-    @ManyToOne
-    @JoinColumn(name = "author_id")
-    private User user;
+    private long authorId;
     @CreationTimestamp
     private ZonedDateTime createdAt;
     @UpdateTimestamp
     private ZonedDateTime updatedAt;
-
-    public long getAuthorId() {
-        return user.getId();
-    }
 
     public void update(PostDto.Update updatePostDto) {
         if(updatePostDto.hasSubject()) {
