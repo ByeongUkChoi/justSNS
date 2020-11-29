@@ -24,7 +24,7 @@ public class getPostsTest {
 
         final HttpHeaders headers = new HttpHeaders();
         // TODO: 공통 함수 혹은 intercepter사용. 토큰은 환경 변수로 분리
-        headers.set("Authorization", "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxMDAwMSIsImlhdCI6MTYwNTE1NTM3MSwiZXhwIjoxNjA2NTE3NTM3fQ.EeUwOdY_p0EmB9vQKD35MWWK-xeCVCDnSfbJBPnThpzDkcLO7Pzk5RR--vreflMrONfKWpueB8ZhuZU87w45RQ");
+        headers.set("Authorization", "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxMDAwMSIsImlhdCI6MTYwNTE1NTM3MSwiZXhwIjoxNzA2NTE3NTM3fQ.uqbJyMqGD7JEoPt9z2zXOV5QOt6FYmn2CqrvTCRHEqh27wrm36ZnjlT9gBgYP5dPWu-HglK6U40xDst2KBCasA");
 
         HttpEntity request = new HttpEntity(headers);
 

@@ -18,7 +18,7 @@ public class getPostWithWebTestClientTest {
         // TODO:
         webTestClient.get()
                 .uri("/posts")
-                .header("Authorization", "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxMDAwMSIsImlhdCI6MTYwNTE1NTM3MSwiZXhwIjoxNjA2NTE3NTM3fQ.EeUwOdY_p0EmB9vQKD35MWWK-xeCVCDnSfbJBPnThpzDkcLO7Pzk5RR--vreflMrONfKWpueB8ZhuZU87w45RQ")
+                .header("Authorization", "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxMDAwMSIsImlhdCI6MTYwNTE1NTM3MSwiZXhwIjoxNzA2NTE3NTM3fQ.uqbJyMqGD7JEoPt9z2zXOV5QOt6FYmn2CqrvTCRHEqh27wrm36ZnjlT9gBgYP5dPWu-HglK6U40xDst2KBCasA")
                 .exchange()
                 .expectStatus().isOk();
     }
