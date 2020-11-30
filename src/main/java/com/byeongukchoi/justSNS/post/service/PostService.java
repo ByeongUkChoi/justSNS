@@ -37,14 +37,14 @@ public class PostService {
         return new PostDto.Response(post);
     }
 
-    public PagedResponse getPosts(int pageNumber, int size) {
+    public PagedResponse<PostDto.Response> getPosts(int pageNumber, int size) {
         // Retrieve posts
         Pageable pageable = PageRequest.of(pageNumber, size, Sort.Direction.DESC, "createdAt");
         Page<Post> posts = postRepository.findAll(pageable);
         long totalElements = postRepository.count();
 
         // Page<Entity> -> List<Dto>
-        List<PostDto.Response> postResponseDtoList = posts.map(post -> new PostDto.Response(post)).getContent();
+        List<PostDto.Response> postResponseDtoList = posts.map(PostDto.Response::new).getContent();
 
         return new PagedResponse<>(postResponseDtoList, pageNumber, size, totalElements);
     }
