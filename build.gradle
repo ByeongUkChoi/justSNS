@@ -40,10 +40,10 @@ dependencies {
 
     // ---
 	// https://mvnrepository.com/artifact/io.jsonwebtoken/jjwt
-	compile group: 'io.jsonwebtoken', name: 'jjwt', version: '0.9.1'
+	implementation group: 'io.jsonwebtoken', name: 'jjwt', version: '0.9.1'
 
 	// https://mvnrepository.com/artifact/org.apache.httpcomponents/httpclient
-	compile group: 'org.apache.httpcomponents', name: 'httpclient', version: '4.5.13'
+	implementation group: 'org.apache.httpcomponents', name: 'httpclient', version: '4.5.13'
 
 	// https://mvnrepository.com/artifact/org.modelmapper/modelmapper
 	//compile group: 'org.modelmapper', name: 'modelmapper', version: '2.3.9'
