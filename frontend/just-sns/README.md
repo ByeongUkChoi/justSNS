@@ -1,4 +1,4 @@
-# justsns-frontend
+# just-sns
 
 ## Project setup
 ```
