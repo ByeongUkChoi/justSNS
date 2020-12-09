@@ -16,7 +16,7 @@ front end 프레임워크를 사용할지 그냥 할지 고민 중
 java 11  
 spring boot 2.3.5  
 mysql  
-vuejs 2.
+vue js 2.6
 
 ## 기능
 * 회원
