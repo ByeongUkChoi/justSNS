@@ -36,11 +36,13 @@ public class PostController {
 //        return service.getPostById(postId);
 //    }
     @GetMapping("/{postId}")
-    public EntityModel<PostDto.Response> getPostById(@PathVariable long postId) {
+    public EntityModel<PostDto.Response> getPostById(@CurrentUser UserPrincipal userPrincipal, @PathVariable long postId) {
         PostDto.Response post = service.getPostById(postId);
         EntityModel<PostDto.Response> entityModel = EntityModel.of(post,
-                linkTo(methodOn(PostController.class).getPostById(postId)).withSelfRel(),
-                linkTo(methodOn(PostController.class).getPosts(0, 20)).withRel("posts"));
+                linkTo(methodOn(PostController.class).getPostById(userPrincipal, postId)).withSelfRel(),
+                linkTo(methodOn(PostController.class).getPosts(0, 20)).withRel("list"),
+                //linkTo(methodOn(PostController.class).deletePost(userPrincipal, postId)).withRel("delete"),   // ERROR void type not allowed
+                linkTo(methodOn(PostController.class).updatePost(userPrincipal, new PostDto.Update(), postId)).withRel("update"));
         return entityModel;
     }
 //    @GetMapping("/{postId}")
