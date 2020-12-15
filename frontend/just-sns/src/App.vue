@@ -2,20 +2,18 @@
   <div id="app">
     <app-header></app-header>
     <b-container>
-      <HelloWorld msg="Welcome to Your Vue.js App"/>
+      <router-view></router-view>
     </b-container>
   </div>
 </template>
 
 <script>
 import AppHeader from '@/components/AppHeader';
-import HelloWorld from './components/HelloWorld.vue'
 
 export default {
   name: 'App',
   components: {
-    AppHeader,
-    HelloWorld
+    AppHeader
   }
 }
 </script>
