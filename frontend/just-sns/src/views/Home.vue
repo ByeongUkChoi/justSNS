@@ -1,11 +1,15 @@
 <template>
-    <div>
-        <p>hello world</p>
-    </div>
+    <b-container>
+        <PostList />
+    </b-container>
 </template>
 
 <script>
-export default {
+import PostList from "@/components/PostList"
 
+export default {
+    components: {
+        PostList
+    }
 }
 </script>
