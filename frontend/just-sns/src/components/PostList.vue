@@ -4,13 +4,15 @@
     <div v-else>
       <div v-if="posts.length === 0"> No posts are here... yet.</div>
       <div v-for="post in posts" v-bind:key="post.id">
-        {{post.subject}}
+        {{post.title}}
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
     data() {
         return {
@@ -28,19 +30,11 @@ export default {
             if (this.isLoading) {
                 this.isLoading = false;
             }
-            // TODO: test
-            this.posts = [
-                {
-                    id: 1,
-                    subject: "test 1",
-                    author: "T"
-                },
-                {
-                    id: 2,
-                    subject: "test 2",
-                    author: "ABC"
-                }
-            ]
+            var vm = this;
+            // TODO: 예시
+            axios.get('https://jsonplaceholder.typicode.com/posts')
+                .then(response => vm.posts = response.data)
+                .catch(error => console.log(error))
         }
     }
 }
