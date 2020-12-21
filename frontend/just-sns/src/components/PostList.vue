@@ -8,9 +8,10 @@
     </div>
     <div v-else>
         <div v-for="post in posts" v-bind:key="post.id">
-            <b-card :title="post.title" :sub-title="post.userId">
+            <b-card :title="post.title" :sub-title="String(post.userId)">
                 <b-card-text>{{post.body}}</b-card-text>
             </b-card>
+            <br>
         </div>
     </div>
   </div>
@@ -33,10 +34,9 @@ export default {
     },
     methods: {
         fetchPosts() {
-            var vm = this;
             // TODO: 예시
             axios.get('https://jsonplaceholder.typicode.com/posts')
-                .then(response => vm.posts = response.data)
+                .then(response => this.posts = response.data)
                 .catch(error => console.log(error))
                 .finally(() => {
                     if(this.isLoading) {

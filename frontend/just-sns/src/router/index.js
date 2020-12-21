@@ -9,6 +9,11 @@ export default new VueRouter({
             path: '/',
             name: 'home',
             component: () => import("@/views/Home"),
-        }
+        },
+        {
+            path: '/write',
+            name: 'write',
+            component: () => import("@/views/Write"),
+        },
     ]
 })
