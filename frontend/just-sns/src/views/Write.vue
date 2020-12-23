@@ -15,13 +15,15 @@
         ></b-form-textarea>
       </b-form-group>
 
-      <b-button type="submit" variant="primary">Submit</b-button>
-      <b-button type="reset" variant="danger">Reset</b-button>
+      <b-button pill type="submit" variant="outline-primary">Submit</b-button>&nbsp;
+      <b-button pill type="reset" variant="outline-danger">Reset</b-button>
     </b-form>
   </b-container>
 </template>
 
 <script>
+  import axios from "axios";
+
   export default {
     data() {
       return {
@@ -31,7 +33,12 @@
     },
     methods: {
       onSubmit() {
-          // TODO:
+          axios.post('https://jsonplaceholder.typicode.com/posts', {content : this.text})
+              .then(() => {
+                alert("Posting is complete")
+                this.text = ''
+              })
+              .catch(error => console.log(error))
       },
       onReset() {
         // Reset our form values
