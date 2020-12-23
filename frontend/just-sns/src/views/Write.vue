@@ -36,7 +36,7 @@
           axios.post('https://jsonplaceholder.typicode.com/posts', {content : this.text})
               .then(() => {
                 alert("Posting is complete")
-                this.text = ''
+                this.$router.push('/')
               })
               .catch(error => console.log(error))
       },
