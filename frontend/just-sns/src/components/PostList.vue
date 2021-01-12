@@ -18,7 +18,7 @@
 </template>
 
 <script>
-import axios from "axios";
+import { fetchPosts } from '@/api/posts';
 
 export default {
     data() {
@@ -28,21 +28,14 @@ export default {
         }
     },
     mounted() {
-        this.fetchPosts();
+        this.fetchData();
     },
     computed: {
     },
     methods: {
-        fetchPosts() {
-            // TODO: 예시
-            axios.get('https://jsonplaceholder.typicode.com/posts')
-                .then(response => this.posts = response.data)
-                .catch(error => console.log(error))
-                .finally(() => {
-                    if(this.isLoading) {
-                        this.isLoading = false
-                    }
-                })
+        async fetchData() {
+           const posts = await fetchPosts();
+           console.log(posts);
         }
     }
 }
