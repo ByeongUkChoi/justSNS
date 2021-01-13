@@ -1,9 +1,7 @@
 import { posts } from './index';
 
 function fetchPosts() {
-    return posts.get();
+  return posts.get();
 }
 
-export {
-    fetchPosts,
-};
+export { fetchPosts };

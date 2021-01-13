@@ -1,8 +1,8 @@
 import axios from 'axios';
 
 function create(url, options) {
-	const instance = axios.create(Object.assign({ baseURL: url }, options));
-	return instance;
+  const instance = axios.create(Object.assign({ baseURL: url }, options));
+  return instance;
 }
 // TODO: create with auth
 

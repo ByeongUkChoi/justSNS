@@ -4,7 +4,6 @@
       <b-nav-item to="/">Home</b-nav-item>
     </b-navbar-nav>
 
-
     <b-navbar-nav class="ml-auto">
       <b-button size="lg" variant="dark" to="/write">
         <b-icon icon="plus-circle" aria-label="write"></b-icon>
@@ -21,6 +20,6 @@
 
 <script>
 export default {
-    name: 'AppHeader'
-}
+  name: 'AppHeader',
+};
 </script>
