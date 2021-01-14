@@ -7,4 +7,4 @@ function create(url, options) {
 // TODO: create with auth
 
 // TODO: env
-export const posts = create('http://localhost:8080/posts/');
+export const posts = create(process.env.VUE_APP_API_URL + '/posts/');
