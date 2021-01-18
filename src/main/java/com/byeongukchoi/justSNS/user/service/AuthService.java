@@ -51,4 +51,14 @@ public class AuthService {
         String jwt = tokenProvider.generateToken(authentication);
         return jwt;
     }
+
+    /**
+     * username 중복 검사
+     * @param username
+     * @return
+     */
+    public boolean isDuplicateUsername(String username) {
+        User user = userRepository.findByUsername(username);
+        return user != null;
+    }
 }

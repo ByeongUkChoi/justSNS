@@ -32,4 +32,13 @@ public class AuthController {
         return ResponseEntity.ok(jwt);
         //return ResponseEntity.ok(new JwtAuthenticationResponse(jwt));
     }
+
+    @GetMapping("check-username/{username}")
+    public ResponseEntity duplicateUsername(@PathVariable String username) {
+        boolean isDuplicateUsername = service.isDuplicateUsername(username);
+        if (isDuplicateUsername) {
+            return new ResponseEntity(HttpStatus.CONFLICT);
+        }
+        return new ResponseEntity(HttpStatus.OK);
+    }
 }
