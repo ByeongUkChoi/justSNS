@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
+// TODO: ip 변경 예정
+@CrossOrigin(origins = "http://localhost:8081")
 @RestController
 @RequestMapping("/auth")
 @RequiredArgsConstructor
