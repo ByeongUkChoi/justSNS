@@ -72,6 +72,8 @@
   </b-form>
 </template>
 <script>
+import { duplicateCheck } from '@/api/auth';
+
 export default {
   computed: {
     verifyName() {
@@ -79,6 +81,9 @@ export default {
     },
     verifyId() {
       if (!this.checkLength('id')) {
+        return false;
+      }
+      if (!this.isDuplicateId()) {
         return false;
       }
       // TODO: id 중복 검사
@@ -149,9 +154,13 @@ export default {
     checkLength(type) {
       return this.form[type].length >= this.minLength[type];
     },
-    isDuplicateId() {
-      // TODO: id 중복 검사
-      return false;
+    async isDuplicateId() {
+      try {
+        await duplicateCheck(this.form.id);
+        return false;
+      } catch (error) {
+        return false;
+      }
     },
     equalPasswordCheck() {
       return this.form.password === this.form.passwordCheck;
