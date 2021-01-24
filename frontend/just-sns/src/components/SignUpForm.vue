@@ -9,7 +9,7 @@
       description=""
       label="이름"
       label-for="name"
-      :invalid-feedback="`이름을 입력해주세요. (${this.minLength.name}글자 이상)`"
+      :invalid-feedback="`이름을 입력해주세요. (${this.length.min.name}자 이상 ${this.length.max.name}자 이하)`"
       ><b-form-input
         id="name"
         v-model="form.name"
@@ -83,18 +83,18 @@ export default {
       if (!this.checkLength('id')) {
         return false;
       }
-      if (!this.isDuplicateId()) {
+      this.checkDuplicateId();
+      if (this.isDuplicateId) {
         return false;
       }
-      // TODO: id 중복 검사
       return true;
     },
     idInvalidFeedback() {
       if (!this.checkLength('id')) {
-        return `아이디를 입력해 주세요. (${this.minLength.id}글자 이상)`;
+        return `아이디를 입력해 주세요. (${this.length.min.id}자 이상 ${this.length.max.id}자 이하)`;
       }
-      // TODO: id 중복 검사
-      if (this.isDuplicateId()) {
+      // id 중복 여부
+      if (this.isDuplicateId) {
         return '아이디가 중복입니다.';
       }
       return '';
@@ -108,24 +108,25 @@ export default {
     },
     passwordInvalidFeedback() {
       if (!this.checkLength('password')) {
-        return `비밀번호를 입력해 주세요. (${this.minLength.password}글자 이상)`;
+        return `비밀번호를 입력해 주세요. (${this.length.min.password}자 이상 ${this.length.max.password}자 이하)`;
       }
       // TODO: password 정합성 검사
       return '';
     },
     verifyPasswordCheck() {
-      if (!this.checkLength('passwordCheck')) {
+      // 패스워드가 올바르지 않은 경우
+      if (!this.verifyPassword) {
         return false;
       }
+      // 패스워드와 일치하지 않은 경우
       if (!this.equalPasswordCheck()) {
         return false;
       }
-      // TODO: password 정합성 검사
       return true;
     },
     passwordCheckInvalidFeedback() {
       if (!this.checkLength('passwordCheck')) {
-        return `비밀번호를 입력해 주세요. (${this.minLength.password}글자 이상)`;
+        return `비밀번호를 입력해 주세요. (${this.length.min.password}자 이상 ${this.length.max.password}자 이하)`;
       }
       if (!this.equalPasswordCheck()) {
         return '비밀번호가 다릅니다.';
@@ -136,11 +137,19 @@ export default {
   },
   data() {
     return {
-      minLength: {
-        name: 2,
-        id: 3,
-        password: 4,
-        passwordCheck: 4,
+      length: {
+        min: {
+          name: 2,
+          id: 3,
+          password: 4,
+          passwordCheck: 4,
+        },
+        max: {
+          name: 20,
+          id: 20,
+          password: 20,
+          passwordCheck: 20,
+        },
       },
       form: {
         name: '',
@@ -148,18 +157,24 @@ export default {
         password: '',
         passwordCheck: '',
       },
+      isDuplicateId: false,
     };
   },
   methods: {
     checkLength(type) {
-      return this.form[type].length >= this.minLength[type];
+      if (this.form[type].length < this.length.min[type]) {
+        return false;
+      } else if (this.form[type].length > this.length.max[type]) {
+        return false;
+      }
+      return true;
     },
-    async isDuplicateId() {
+    async checkDuplicateId() {
       try {
         await duplicateCheck(this.form.id);
-        return false;
+        this.isDuplicateId = false;
       } catch (error) {
-        return false;
+        this.isDuplicateId = true;
       }
     },
     equalPasswordCheck() {
