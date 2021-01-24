@@ -1,5 +1,5 @@
 <template>
-  <b-form @submit="onSubmit" @reset="onReset">
+  <b-form @submit.prevent="onSubmit" @reset="onReset">
     <b-form-group
       id="fieldset-1"
       label-cols-sm="4"
@@ -67,8 +67,12 @@
         trim
       ></b-form-input>
     </b-form-group>
-    <b-button type="submit" variant="primary">Submit</b-button>
-    <b-button type="reset" variant="danger">Reset</b-button>
+    <b-container>
+      <b-button type="submit" variant="primary" :disabled="!enableSubmit"
+        >Submit</b-button
+      >
+      <b-button type="reset" variant="danger" center>Reset</b-button>
+    </b-container>
   </b-form>
 </template>
 <script>
@@ -134,6 +138,17 @@ export default {
       // TODO: password 정합성 검사
       return '';
     },
+    enableSubmit() {
+      if (
+        this.verifyName &&
+        this.verifyId &&
+        this.verifyPassword &&
+        this.verifyPasswordCheck
+      ) {
+        return true;
+      }
+      return false;
+    },
   },
   data() {
     return {
@@ -181,6 +196,9 @@ export default {
       return this.form.password === this.form.passwordCheck;
     },
     onSubmit() {
+      if (!this.enableSubmit) {
+        return;
+      }
       // TODO:
       alert('submit');
     },
