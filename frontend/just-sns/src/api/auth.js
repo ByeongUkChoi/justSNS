@@ -4,4 +4,8 @@ function duplicateCheck(username) {
   return auth.get(`check-username/${username}`);
 }
 
-export { duplicateCheck };
+function signUp(data) {
+  return auth.post(`signup`, data);
+}
+
+export { duplicateCheck, signUp };

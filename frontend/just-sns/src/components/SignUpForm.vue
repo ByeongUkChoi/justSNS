@@ -76,7 +76,7 @@
   </b-form>
 </template>
 <script>
-import { duplicateCheck } from '@/api/auth';
+import { duplicateCheck, signUp } from '@/api/auth';
 
 export default {
   computed: {
@@ -195,12 +195,19 @@ export default {
     equalPasswordCheck() {
       return this.form.password === this.form.passwordCheck;
     },
-    onSubmit() {
+    async onSubmit() {
       if (!this.enableSubmit) {
         return;
       }
+      const payload = {
+        username: this.id,
+        password: this.password,
+        name: this.name,
+        //email: this.email
+      };
+      const response = await signUp(payload);
       // TODO:
-      alert('submit');
+      console.log(response);
     },
     onReset() {
       this.form.name = '';
