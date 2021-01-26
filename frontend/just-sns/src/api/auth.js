@@ -5,7 +5,7 @@ function duplicateCheck(username) {
 }
 
 function signUp(data) {
-  return auth.post(`signup`, data);
+  return auth.post('signup', data);
 }
 
 export { duplicateCheck, signUp };

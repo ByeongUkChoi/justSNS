@@ -1,23 +1,6 @@
 <template>
   <b-form @submit.prevent="onSubmit" @reset="onReset">
     <b-form-group
-      id="fieldset-1"
-      label-cols-sm="4"
-      label-cols-lg="3"
-      content-cols-sm
-      content-cols-lg="7"
-      description=""
-      label="이름"
-      label-for="name"
-      :invalid-feedback="`이름을 입력해주세요. (${this.length.min.name}자 이상 ${this.length.max.name}자 이하)`"
-      ><b-form-input
-        id="name"
-        v-model="form.name"
-        :state="verifyName"
-        trim
-      ></b-form-input>
-    </b-form-group>
-    <b-form-group
       label-cols-sm="4"
       label-cols-lg="3"
       content-cols-sm
@@ -67,6 +50,41 @@
         trim
       ></b-form-input>
     </b-form-group>
+    <b-form-group
+      id="fieldset-1"
+      label-cols-sm="4"
+      label-cols-lg="3"
+      content-cols-sm
+      content-cols-lg="7"
+      description=""
+      label="이름"
+      label-for="name"
+      :invalid-feedback="`이름을 입력해주세요. (${this.length.min.name}자 이상 ${this.length.max.name}자 이하)`"
+      ><b-form-input
+        id="name"
+        v-model="form.name"
+        :state="verifyName"
+        trim
+      ></b-form-input>
+    </b-form-group>
+    <b-form-group
+      id="fieldset-1"
+      label-cols-sm="4"
+      label-cols-lg="3"
+      content-cols-sm
+      content-cols-lg="7"
+      description=""
+      label="이메일"
+      label-for="email"
+      :invalid-feedback="'이메일을 형식을 올바르게 입력해주세요.'"
+      ><b-form-input
+        id="name"
+        type="email"
+        v-model="form.email"
+        :state="verifyEmail"
+        trim
+      ></b-form-input>
+    </b-form-group>
     <b-container>
       <b-button type="submit" variant="primary" :disabled="!enableSubmit"
         >Submit</b-button
@@ -80,9 +98,6 @@ import { duplicateCheck, signUp } from '@/api/auth';
 
 export default {
   computed: {
-    verifyName() {
-      return this.checkLength('name');
-    },
     verifyId() {
       if (!this.checkLength('id')) {
         return false;
@@ -138,6 +153,12 @@ export default {
       // TODO: password 정합성 검사
       return '';
     },
+    verifyName() {
+      return this.checkLength('name');
+    },
+    verifyEmail() {
+      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(this.form.email);
+    },
     enableSubmit() {
       if (
         this.verifyName &&
@@ -167,10 +188,11 @@ export default {
         },
       },
       form: {
-        name: '',
         id: '',
         password: '',
         passwordCheck: '',
+        name: '',
+        email: '',
       },
       isDuplicateId: false,
     };
@@ -200,10 +222,10 @@ export default {
         return;
       }
       const payload = {
-        username: this.id,
-        password: this.password,
-        name: this.name,
-        //email: this.email
+        username: this.form.id,
+        password: this.form.password,
+        name: this.form.name,
+        email: this.form.email,
       };
       const response = await signUp(payload);
       // TODO:
