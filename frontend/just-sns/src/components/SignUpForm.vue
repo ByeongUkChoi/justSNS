@@ -28,6 +28,7 @@
       :invalid-feedback="passwordInvalidFeedback"
       ><b-form-input
         id="password"
+        type="password"
         v-model="form.password"
         :state="verifyPassword"
         trim
@@ -45,6 +46,7 @@
       :invalid-feedback="passwordCheckInvalidFeedback"
       ><b-form-input
         id="passwordCheck"
+        type="password"
         v-model="form.passwordCheck"
         :state="verifyPasswordCheck"
         trim
@@ -97,6 +99,32 @@
 import { duplicateCheck, signUp } from '@/api/auth';
 
 export default {
+  data() {
+    return {
+      length: {
+        min: {
+          name: 2,
+          id: 3,
+          password: 4,
+          passwordCheck: 4,
+        },
+        max: {
+          name: 20,
+          id: 20,
+          password: 20,
+          passwordCheck: 20,
+        },
+      },
+      form: {
+        id: '',
+        password: '',
+        passwordCheck: '',
+        name: '',
+        email: '',
+      },
+      isDuplicateId: false,
+    };
+  },
   computed: {
     verifyId() {
       if (!this.checkLength('id')) {
@@ -171,32 +199,6 @@ export default {
       return false;
     },
   },
-  data() {
-    return {
-      length: {
-        min: {
-          name: 2,
-          id: 3,
-          password: 4,
-          passwordCheck: 4,
-        },
-        max: {
-          name: 20,
-          id: 20,
-          password: 20,
-          passwordCheck: 20,
-        },
-      },
-      form: {
-        id: '',
-        password: '',
-        passwordCheck: '',
-        name: '',
-        email: '',
-      },
-      isDuplicateId: false,
-    };
-  },
   methods: {
     checkLength(type) {
       if (this.form[type].length < this.length.min[type]) {
@@ -227,9 +229,13 @@ export default {
         name: this.form.name,
         email: this.form.email,
       };
-      const response = await signUp(payload);
-      // TODO:
-      console.log(response);
+      try {
+        await signUp(payload);
+        alert('회원가입이 완료되었습니다.');
+        this.$router.push('/sign-in');
+      } catch (error) {
+        console.log(error);
+      }
     },
     onReset() {
       this.form.name = '';

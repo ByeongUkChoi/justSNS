@@ -8,4 +8,8 @@ function signUp(data) {
   return auth.post('signup', data);
 }
 
-export { duplicateCheck, signUp };
+function signIn(data) {
+  return auth.post('signin', data);
+}
+
+export { duplicateCheck, signUp, signIn };
