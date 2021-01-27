@@ -1,10 +1,18 @@
 import axios from 'axios';
+import { setInterceptors } from './common/interceptors';
 
-function create(url, options) {
-  const instance = axios.create(Object.assign({ baseURL: url }, options));
-  return instance;
+function createInstance(url) {
+  const instance = axios.create({
+    baseURL: `${process.env.VUE_APP_API_URL}${url}/`,
+  });
+  return setInterceptors(instance);
 }
+
+// function create(url) {
+//   const instance = axios.create({ baseURL: url });
+//   return instance;
+// }
 // TODO: create with auth
 
-export const auth = create(`${process.env.VUE_APP_API_URL}auth/`);
-export const posts = create(`${process.env.VUE_APP_API_URL}posts/`);
+export const auth = createInstance('auth');
+export const posts = createInstance('posts');

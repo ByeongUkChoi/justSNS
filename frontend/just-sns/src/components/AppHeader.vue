@@ -10,8 +10,9 @@
           <b-icon icon="plus-circle" aria-label="write"></b-icon>
         </b-button>
         <b-nav-item-dropdown text="User" right>
-          <b-dropdown-item href="#">Account</b-dropdown-item>
+          <b-dropdown-item>{{ loginUsername }}</b-dropdown-item>
           <b-dropdown-item href="#">Settings</b-dropdown-item>
+          <b-dropdown-item @click="logout">Logout</b-dropdown-item>
         </b-nav-item-dropdown>
       </template>
       <template v-else>
@@ -30,6 +31,15 @@ export default {
   computed: {
     isLogin() {
       return this.$store.getters.isLogin;
+    },
+    loginUsername() {
+      return this.$store.state.username;
+    },
+  },
+  methods: {
+    logout() {
+      this.$store.commit('clearAuth');
+      this.$router.push('sign-in');
     },
   },
 };

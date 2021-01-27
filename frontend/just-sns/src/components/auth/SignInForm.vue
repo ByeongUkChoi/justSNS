@@ -73,10 +73,8 @@ export default {
       };
       try {
         const { data } = await signIn(payload);
-        // TODO: token에 정보 담기
-        //const token = data;
-        console.log(data);
         this.$store.commit('setUsername', this.form.id);
+        this.$store.commit('setToken', data);
       } catch (error) {
         console.log(error);
       }
