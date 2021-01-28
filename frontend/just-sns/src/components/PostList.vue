@@ -5,23 +5,37 @@
     </div>
     <div v-else-if="posts.length === 0">No posts are here... yet.</div>
     <div v-else>
-      <div v-for="post in posts" v-bind:key="post.id">
-        <b-card :title="post.title" :sub-title="String(post.userId)">
-          <b-card-text>{{ post.body }}</b-card-text>
-        </b-card>
-        <br />
-      </div>
+      <PostItem v-for="post in posts" :key="post.id" :post="post"></PostItem>
     </div>
   </div>
 </template>
 
 <script>
+import PostItem from '@/components/post/PostItem';
 import { fetchPosts } from '@/api/posts';
 
 export default {
+  components: {
+    PostItem,
+  },
   data() {
     return {
       posts: [],
+      // TODO: test
+      // posts: [
+      //   {
+      //     id: 1,
+      //     userId: 'abc',
+      //     title: 'tt',
+      //     body: 'body',
+      //   },
+      //   {
+      //     id: 2,
+      //     userId: '22',
+      //     title: 'tt3',
+      //     body: 'body323',
+      //   },
+      // ],
       isLoading: false,
     };
   },
