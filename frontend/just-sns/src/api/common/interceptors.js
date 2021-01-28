@@ -1,7 +1,9 @@
+import store from '@/store';
+
 export function setInterceptors(instance) {
   instance.interceptors.request.use(
     config => {
-      console.log(config);
+      config.headers.Authorization = store.state.token;
     },
     error => {
       console.log(error);
