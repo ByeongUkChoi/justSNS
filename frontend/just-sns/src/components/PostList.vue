@@ -22,7 +22,7 @@ export default {
   data() {
     return {
       posts: [],
-      isLoading: true,
+      isLoading: false,
     };
   },
   mounted() {
@@ -31,7 +31,9 @@ export default {
   computed: {},
   methods: {
     async fetchData() {
+      this.isLoading = true;
       const posts = await fetchPosts();
+      this.isLoading = false;
       console.log(posts);
     },
   },
