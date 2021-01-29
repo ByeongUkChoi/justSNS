@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
+import { signIn } from '@/api/auth';
 
 Vue.use(Vuex);
 
@@ -28,6 +29,15 @@ export default new Vuex.Store({
       state.username = '';
       state.name = '';
       state.token = '';
+    },
+  },
+  actions: {
+    async LOGIN({ commit }, userData) {
+      const { data } = await signIn(userData);
+      commit('setUsername', userData.username);
+      // TODO: set name
+      //commit('setName', );
+      commit('setToken', data);
     },
   },
 });
