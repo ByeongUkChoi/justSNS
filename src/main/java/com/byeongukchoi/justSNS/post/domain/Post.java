@@ -20,8 +20,6 @@ public class Post {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    private String subject;
-
     //@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY, optional = false, orphanRemoval = true)
     // cascade = CascadeType.ALL 생성 시 필요
     // orphanRemoval = true postContent의 참조가 끊어질 경우 부모가 없는(posts 테이블에서 참조하지 않는) post_contents row 제거
@@ -41,9 +39,6 @@ public class Post {
     }
 
     public void update(PostDto.Update updatePostDto) {
-        if(updatePostDto.hasSubject()) {
-            subject = updatePostDto.getSubject();
-        }
         if(updatePostDto.hasContent()) {
              content = new PostContent(updatePostDto.getContent());
         }

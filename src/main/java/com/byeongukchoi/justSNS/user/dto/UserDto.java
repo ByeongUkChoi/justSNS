@@ -17,6 +17,7 @@ public class UserDto {
         @NotBlank
         @Size(min = 8, max = 20)
         private String password;
+        // TODO: passwordCheck
         @NotBlank
         @Size(min = 3, max = 20)
         private String name;

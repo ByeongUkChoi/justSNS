@@ -21,13 +21,11 @@ public class PostDto {
 
         public Post toEntity() {
             return Post.builder()
-                    .subject(subject)
                     .content(new PostContent(content))
                     .build();
         }
         public Post toEntity(long userId) {
             return Post.builder()
-                    .subject(subject)
                     .content(new PostContent(content))
                     .authorId(userId)
                     .build();
@@ -60,7 +58,6 @@ public class PostDto {
 
         public Response(Post post) {
             this.id = post.getId();
-            this.subject = post.getSubject();
             this.content = post.getContent();
             this.authorId = post.getAuthorId();
             this.createdAt = post.getCreatedAt();
