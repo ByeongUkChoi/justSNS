@@ -20,11 +20,7 @@ public class Post {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    //@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY, optional = false, orphanRemoval = true)
-    // cascade = CascadeType.ALL 생성 시 필요
-    // orphanRemoval = true postContent의 참조가 끊어질 경우 부모가 없는(posts 테이블에서 참조하지 않는) post_contents row 제거
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
-    private PostContent content;
+    private String content;
 
     private long authorId;
 
@@ -34,13 +30,9 @@ public class Post {
     @UpdateTimestamp
     private ZonedDateTime updatedAt;
 
-    public String getContent() {
-        return content.getBody();
-    }
-
     public void update(PostDto.Update updatePostDto) {
         if(updatePostDto.hasContent()) {
-             content = new PostContent(updatePostDto.getContent());
+            content = updatePostDto.getContent();
         }
     }
 }

@@ -1,7 +1,6 @@
 package com.byeongukchoi.justSNS.post.dto;
 
 import com.byeongukchoi.justSNS.post.domain.Post;
-import com.byeongukchoi.justSNS.post.domain.PostContent;
 import lombok.Getter;
 
 import javax.validation.constraints.NotBlank;
@@ -21,12 +20,12 @@ public class PostDto {
 
         public Post toEntity() {
             return Post.builder()
-                    .content(new PostContent(content))
+                    .content(content)
                     .build();
         }
         public Post toEntity(long userId) {
             return Post.builder()
-                    .content(new PostContent(content))
+                    .content(content)
                     .authorId(userId)
                     .build();
         }
