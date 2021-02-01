@@ -12,15 +12,15 @@ export default new VueRouter({
     },
     {
       path: '/sign-up',
-      component: () => import('@/views/SignUpPage'),
+      component: () => import('@/views/auth/SignUpPage'),
     },
     {
       path: '/sign-in',
-      component: () => import('@/views/SignInPage'),
+      component: () => import('@/views/auth/SignInPage'),
     },
     {
       path: '/write',
-      component: () => import('@/views/Write'),
+      component: () => import('@/views/post/Write'),
     },
     // Not Found Page
     {
