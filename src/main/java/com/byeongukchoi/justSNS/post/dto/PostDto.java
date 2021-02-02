@@ -13,33 +13,13 @@ public class PostDto {
     public static class Create {
         @NotBlank
         @Size(max = 255)
-        private String subject;
-        @NotBlank
-        @Size(max = 255)
         private String content;
-
-        public Post toEntity() {
-            return Post.builder()
-                    .content(content)
-                    .build();
-        }
-        public Post toEntity(long userId) {
-            return Post.builder()
-                    .content(content)
-                    .authorId(userId)
-                    .build();
-        }
     }
     @Getter
     public static class Update {
         @Size(max = 255)
-        private String subject;
-        @Size(max = 255)
         private String content;
 
-        public boolean hasSubject() {
-            return subject != null;
-        }
         public boolean hasContent() {
             return content != null;
         }
@@ -49,7 +29,6 @@ public class PostDto {
     public static class Response {
 
         private long id;
-        private String subject;
         private String content;
         private long authorId;
         private ZonedDateTime createdAt;

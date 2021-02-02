@@ -32,7 +32,8 @@ public class PostService {
                 //.orElseThrow(ResourceNotFoundException::new);   // Supplier 타입 반환 됨. 생성자 레퍼런스를 사용할 경우 lazy initialize 됨.
                 .orElseThrow(RuntimeException::new);   // Supplier 타입 반환 됨. 생성자 레퍼런스를 사용할 경우 lazy initialize 됨.
 
-        Post post = postRepository.save(postCreateDto.toEntity(user.getId()));
+        Post post = new Post(postCreateDto.getContent(), user.getId());
+        postRepository.save(post);
 
         return new PostDto.Response(post);
     }
