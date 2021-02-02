@@ -1,33 +1,29 @@
 <template>
-  <b-navbar type="dark" variant="dark">
-    <b-navbar-nav>
-      <b-nav-item to="/">Home</b-nav-item>
-    </b-navbar-nav>
-
-    <b-navbar-nav class="ml-auto">
-      <template v-if="isLogin">
-        <b-button size="lg" variant="dark" to="/write">
-          <b-icon icon="plus-circle" aria-label="write"></b-icon>
-        </b-button>
-        <b-nav-item-dropdown text="User" right>
-          <b-dropdown-item>{{ loginUsername }}</b-dropdown-item>
-          <b-dropdown-item href="#">Settings</b-dropdown-item>
-          <b-dropdown-item @click="logout">Logout</b-dropdown-item>
-        </b-nav-item-dropdown>
+  <div class="center examplex">
+    <vs-navbar center-collapsed>
+      <template #left>
+        <img class="logo" src="@/assets/logo.png" alt="logo" />
       </template>
-      <template v-else>
-        <b-nav>
-          <b-nav-item to="/sign-in">Sign In</b-nav-item>
-          <b-nav-item to="/sign-up">Sign Up</b-nav-item>
-        </b-nav>
+      <template #right>
+        <!-- <vs-switch v-model="active2">
+          <template #circle>
+            <i v-if="!active2" class="bx bxs-moon"></i>
+            <i v-else class="bx bxs-sun"></i>
+          </template>
+        </vs-switch> -->
+        <template v-if="isLogin">
+          <vs-navbar-item>{{ loginUsername }}</vs-navbar-item>
+          <vs-button flat @click="logout">Logout</vs-button>
+        </template>
+        <template v-else>
+          <vs-button flat>Login</vs-button>
+        </template>
       </template>
-    </b-navbar-nav>
-  </b-navbar>
+    </vs-navbar>
+  </div>
 </template>
-
 <script>
 export default {
-  name: 'AppHeader',
   computed: {
     isLogin() {
       return this.$store.getters.isLogin;
@@ -44,3 +40,11 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.logo {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+}
+</style>

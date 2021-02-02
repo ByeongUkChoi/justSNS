@@ -5,7 +5,10 @@ import store from '@/store';
 import { BootstrapVue, BootstrapVueIcons } from 'bootstrap-vue';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-vue/dist/bootstrap-vue.css';
+
+// Vuesax
 import Vuesax from 'vuesax';
+import 'vuesax/dist/vuesax.css';
 
 Vue.config.productionTip = false;
 
