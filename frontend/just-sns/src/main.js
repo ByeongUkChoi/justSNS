@@ -5,12 +5,16 @@ import store from '@/store';
 import { BootstrapVue, BootstrapVueIcons } from 'bootstrap-vue';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-vue/dist/bootstrap-vue.css';
+import Vuesax from 'vuesax';
 
 Vue.config.productionTip = false;
 
 // Bootstrap
 Vue.use(BootstrapVue);
 Vue.use(BootstrapVueIcons);
+
+// Vuesax
+Vue.use(Vuesax);
 
 new Vue({
   render: h => h(App),
