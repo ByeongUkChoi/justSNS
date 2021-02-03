@@ -2,19 +2,15 @@ import Vue from 'vue';
 import App from './App.vue';
 import router from '@/router';
 import store from '@/store';
-import { BootstrapVue, BootstrapVueIcons } from 'bootstrap-vue';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import 'bootstrap-vue/dist/bootstrap-vue.css';
 
 // Vuesax
 import Vuesax from 'vuesax';
 import 'vuesax/dist/vuesax.css';
+// boxicons
+import 'boxicons';
+import 'boxicons/css/boxicons.min.css';
 
 Vue.config.productionTip = false;
-
-// Bootstrap
-Vue.use(BootstrapVue);
-Vue.use(BootstrapVueIcons);
 
 // Vuesax
 Vue.use(Vuesax);
