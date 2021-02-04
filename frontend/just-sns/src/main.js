@@ -5,6 +5,9 @@ import store from '@/store';
 
 // Vuesax
 import Vuesax from 'vuesax';
+// import 'vuesax/dist/base.css';
+// import 'vuesax/dist/base.min.css';
+//import 'vuesax/dist/vuesax.css';
 import 'vuesax/dist/vuesax.css';
 // boxicons
 import 'boxicons';
