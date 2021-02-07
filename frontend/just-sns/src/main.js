@@ -5,10 +5,10 @@ import store from '@/store';
 
 // Vuesax
 import Vuesax from 'vuesax';
-// import 'vuesax/dist/base.css';
-// import 'vuesax/dist/base.min.css';
-//import 'vuesax/dist/vuesax.css';
-import 'vuesax/dist/vuesax.css';
+// import 'vuesax/dist/vuesax.css';
+import 'vuesax/dist/vuesax.min.css';
+import './assets/css/vuesax.docs-styles.9c3c9a79.css';
+
 // boxicons
 import 'boxicons';
 import 'boxicons/css/boxicons.min.css';
