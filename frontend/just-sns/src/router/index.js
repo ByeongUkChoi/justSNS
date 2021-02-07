@@ -15,10 +15,6 @@ export default new VueRouter({
       component: () => import('@/views/auth/SignUpPage'),
     },
     {
-      path: '/sign-in',
-      component: () => import('@/views/auth/SignInPage'),
-    },
-    {
       path: '/write',
       component: () => import('@/views/post/Write'),
     },
