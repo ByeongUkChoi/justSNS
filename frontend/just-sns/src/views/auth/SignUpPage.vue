@@ -1,7 +1,5 @@
 <template>
-  <b-container>
-    <SignUpForm></SignUpForm>
-  </b-container>
+  <SignUpForm></SignUpForm>
 </template>
 
 <script>
