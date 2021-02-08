@@ -10,7 +10,7 @@
           <i class="bx bx-user"></i>
         </template>
       </vs-input>
-      <vs-input v-model="form.password" placeholder="Password">
+      <vs-input type="password" v-model="form.password" placeholder="Password">
         <template #icon>
           <i class="bx bx-lock"></i>
         </template>
