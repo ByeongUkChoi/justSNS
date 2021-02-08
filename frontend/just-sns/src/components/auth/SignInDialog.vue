@@ -10,17 +10,9 @@
           <i class="bx bx-user"></i>
         </template>
       </vs-input>
-      <vs-input
-        v-model="form.password"
-        placeholder="Password"
-        icon-before
-        icon-after
-      >
-        <template #icon-before>
-          <i class="bx bx-lock">a</i>
-        </template>
-        <template #icon2>
-          <i class="bx bx-user">b</i>
+      <vs-input v-model="form.password" placeholder="Password">
+        <template #icon>
+          <i class="bx bx-lock"></i>
         </template>
       </vs-input>
       <!-- <span class="vs-input__icon--after">
