@@ -1,7 +1,5 @@
 <template>
-  <b-container>
-    <PostList />
-  </b-container>
+  <PostList />
 </template>
 
 <script>
