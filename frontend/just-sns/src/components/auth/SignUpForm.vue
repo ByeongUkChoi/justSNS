@@ -1,248 +1,45 @@
 <template>
-  <b-form @submit.prevent="onSubmit" @reset="onReset">
-    <b-form-group
-      label-cols-sm="4"
-      label-cols-lg="3"
-      content-cols-sm
-      content-cols-lg="7"
-      description=""
-      label="ID"
-      label-for="id"
-      :invalid-feedback="idInvalidFeedback"
-      ><b-form-input
-        id="id"
-        v-model="form.id"
-        :state="verifyId"
-        trim
-      ></b-form-input>
-    </b-form-group>
-    <b-form-group
-      id="fieldset-1"
-      label-cols-sm="4"
-      label-cols-lg="3"
-      content-cols-sm
-      content-cols-lg="7"
-      description=""
-      label="비밀번호"
-      label-for="password"
-      :invalid-feedback="passwordInvalidFeedback"
-      ><b-form-input
-        id="password"
-        type="password"
-        v-model="form.password"
-        :state="verifyPassword"
-        trim
-      ></b-form-input>
-    </b-form-group>
-    <b-form-group
-      id="fieldset-1"
-      label-cols-sm="4"
-      label-cols-lg="3"
-      content-cols-sm
-      content-cols-lg="7"
-      description=""
-      label="비밀번호 확인"
-      label-for="id"
-      :invalid-feedback="passwordCheckInvalidFeedback"
-      ><b-form-input
-        id="passwordCheck"
-        type="password"
-        v-model="form.passwordCheck"
-        :state="verifyPasswordCheck"
-        trim
-      ></b-form-input>
-    </b-form-group>
-    <b-form-group
-      id="fieldset-1"
-      label-cols-sm="4"
-      label-cols-lg="3"
-      content-cols-sm
-      content-cols-lg="7"
-      description=""
-      label="이름"
-      label-for="name"
-      :invalid-feedback="`이름을 입력해주세요. (${this.length.min.name}자 이상 ${this.length.max.name}자 이하)`"
-      ><b-form-input
-        id="name"
-        v-model="form.name"
-        :state="verifyName"
-        trim
-      ></b-form-input>
-    </b-form-group>
-    <b-form-group
-      id="fieldset-1"
-      label-cols-sm="4"
-      label-cols-lg="3"
-      content-cols-sm
-      content-cols-lg="7"
-      description=""
-      label="이메일"
-      label-for="email"
-      :invalid-feedback="'이메일을 형식을 올바르게 입력해주세요.'"
-      ><b-form-input
-        id="name"
-        type="email"
-        v-model="form.email"
-        :state="verifyEmail"
-        trim
-      ></b-form-input>
-    </b-form-group>
-    <b-container>
-      <b-button type="submit" variant="primary" :disabled="!enableSubmit"
-        >Submit</b-button
-      >
-      <b-button type="reset" variant="danger" center>Reset</b-button>
-    </b-container>
-  </b-form>
+  <div class="center content-inputs">
+    <vs-row class="center" justify="center">
+      <vs-input label-placeholder="name" v-model="name">
+        <template v-if="validName" #message-success> Email Valid </template>
+        <template v-else-if="name !== ''" #message-danger>
+          Email Invalid
+        </template>
+      </vs-input>
+    </vs-row>
+    <vs-row class="center" justify="center">
+      <vs-input label-placeholder="ID" v-model="id" />
+    </vs-row>
+    <vs-row class="center" justify="center">
+      <vs-input label-placeholder="password" v-model="password" />
+    </vs-row>
+    <vs-row class="center" justify="center">
+      <vs-input label-placeholder="password check" v-model="passwordCheck" />
+    </vs-row>
+    <vs-row class="center" justify="center">
+      <vs-button @click="onSubmit">Sign Up</vs-button>
+    </vs-row>
+  </div>
 </template>
 <script>
-import { duplicateCheck, signUp } from '@/api/auth';
-
 export default {
-  data() {
-    return {
-      length: {
-        min: {
-          name: 2,
-          id: 3,
-          password: 4,
-          passwordCheck: 4,
-        },
-        max: {
-          name: 20,
-          id: 20,
-          password: 20,
-          passwordCheck: 20,
-        },
-      },
-      form: {
-        id: '',
-        password: '',
-        passwordCheck: '',
-        name: '',
-        email: '',
-      },
-      isDuplicateId: false,
-    };
-  },
-  computed: {
-    verifyId() {
-      if (!this.checkLength('id')) {
-        return false;
-      }
-      this.checkDuplicateId();
-      if (this.isDuplicateId) {
-        return false;
-      }
-      return true;
-    },
-    idInvalidFeedback() {
-      if (!this.checkLength('id')) {
-        return `아이디를 입력해 주세요. (${this.length.min.id}자 이상 ${this.length.max.id}자 이하)`;
-      }
-      // id 중복 여부
-      if (this.isDuplicateId) {
-        return '아이디가 중복입니다.';
-      }
-      return '';
-    },
-    verifyPassword() {
-      if (!this.checkLength('password')) {
-        return false;
-      }
-      // TODO: password 정합성 검사
-      return true;
-    },
-    passwordInvalidFeedback() {
-      if (!this.checkLength('password')) {
-        return `비밀번호를 입력해 주세요. (${this.length.min.password}자 이상 ${this.length.max.password}자 이하)`;
-      }
-      // TODO: password 정합성 검사
-      return '';
-    },
-    verifyPasswordCheck() {
-      // 패스워드가 올바르지 않은 경우
-      if (!this.verifyPassword) {
-        return false;
-      }
-      // 패스워드와 일치하지 않은 경우
-      if (!this.equalPasswordCheck()) {
-        return false;
-      }
-      return true;
-    },
-    passwordCheckInvalidFeedback() {
-      if (!this.checkLength('passwordCheck')) {
-        return `비밀번호를 입력해 주세요. (${this.length.min.password}자 이상 ${this.length.max.password}자 이하)`;
-      }
-      if (!this.equalPasswordCheck()) {
-        return '비밀번호가 다릅니다.';
-      }
-      // TODO: password 정합성 검사
-      return '';
-    },
-    verifyName() {
-      return this.checkLength('name');
-    },
-    verifyEmail() {
-      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(this.form.email);
-    },
-    enableSubmit() {
-      if (
-        this.verifyName &&
-        this.verifyId &&
-        this.verifyPassword &&
-        this.verifyPasswordCheck
-      ) {
-        return true;
-      }
-      return false;
-    },
-  },
+  data: () => ({
+    name: '',
+    id: '',
+    password: '',
+    passwordCheck: '',
+  }),
   methods: {
-    checkLength(type) {
-      if (this.form[type].length < this.length.min[type]) {
-        return false;
-      } else if (this.form[type].length > this.length.max[type]) {
-        return false;
-      }
-      return true;
-    },
-    async checkDuplicateId() {
-      try {
-        await duplicateCheck(this.form.id);
-        this.isDuplicateId = false;
-      } catch (error) {
-        this.isDuplicateId = true;
-      }
-    },
-    equalPasswordCheck() {
-      return this.form.password === this.form.passwordCheck;
-    },
     async onSubmit() {
-      if (!this.enableSubmit) {
-        return;
-      }
-      const payload = {
-        username: this.form.id,
-        password: this.form.password,
-        name: this.form.name,
-        email: this.form.email,
-      };
-      try {
-        await signUp(payload);
-        alert('회원가입이 완료되었습니다.');
-        this.$router.push('/sign-in');
-      } catch (error) {
-        console.log(error);
-      }
-    },
-    onReset() {
-      this.form.name = '';
-      this.form.id = '';
-      this.form.password = '';
-      this.form.passwordCheck = '';
+      console.log('on sumbit');
     },
   },
 };
 </script>
+
+<style scoped>
+.center.content-inputs {
+  background-color: white;
+}
+</style>
