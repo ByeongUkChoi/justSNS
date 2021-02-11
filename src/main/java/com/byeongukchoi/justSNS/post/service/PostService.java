@@ -99,7 +99,7 @@ public class PostService {
 
     // 현재 사용자와 게시판의 작성자 확인
     private void verifyAuthor(Post post, User currentUser) {
-        if(post.getAuthorId() != currentUser.getId()) {
+        if(post.getCreatedAuthorId() != currentUser.getId()) {
             // TODO: 예외처리
             throw new AuthorizationServiceException("Error author id");
         }

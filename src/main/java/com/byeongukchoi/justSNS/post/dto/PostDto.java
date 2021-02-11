@@ -30,14 +30,14 @@ public class PostDto {
 
         private long id;
         private String content;
-        private long authorId;
+        private long createdAuthorId;
         private ZonedDateTime createdAt;
         private ZonedDateTime updatedAt;
 
         public Response(Post post) {
             this.id = post.getId();
             this.content = post.getContent();
-            this.authorId = post.getAuthorId();
+            this.createdAuthorId = post.getCreatedAuthorId();
             this.createdAt = post.getCreatedAt();
             this.updatedAt = post.getUpdatedAt();
         }

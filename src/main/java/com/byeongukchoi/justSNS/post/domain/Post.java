@@ -2,9 +2,13 @@ package com.byeongukchoi.justSNS.post.domain;
 
 import com.byeongukchoi.justSNS.comment.domain.Comment;
 import com.byeongukchoi.justSNS.post.dto.PostDto;
-import lombok.*;
+import lombok.AccessLevel;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
+import org.springframework.data.annotation.CreatedBy;
+import org.springframework.data.annotation.LastModifiedBy;
 
 import javax.persistence.*;
 import java.time.ZonedDateTime;
@@ -26,7 +30,11 @@ public class Post {
     @OrderColumn(name="id")
     private List<Comment> comments;
 
-    private long authorId;
+    @CreatedBy
+    private long createdAuthorId;
+
+    @LastModifiedBy
+    private long modifiedAuthorId;
 
     @CreationTimestamp
     private ZonedDateTime createdAt;
@@ -36,7 +44,6 @@ public class Post {
 
     public Post(String content, long authorId) {
         this.content = content;
-        this.authorId = authorId;
     }
 
     public void update(PostDto.Update updatePostDto) {
