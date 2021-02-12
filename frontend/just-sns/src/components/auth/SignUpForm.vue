@@ -23,16 +23,52 @@
   </div>
 </template>
 <script>
+import { duplicateCheck, signUp } from '@/api/auth';
+
 export default {
   data: () => ({
-    name: '',
-    id: '',
-    password: '',
-    passwordCheck: '',
+    form: {
+      name: '',
+      id: '',
+      password: '',
+      passwordCheck: '',
+    },
+    isDuplicateId: false,
   }),
+  computed: {
+    enableSubmit() {
+      if (this.name && this.id && this.password && this.passwordCheck) {
+        return true;
+      }
+      return false;
+    },
+  },
   methods: {
+    async checkDuplicateId() {
+      try {
+        await duplicateCheck(this.form.id);
+        this.isDuplicateId = false;
+      } catch (error) {
+        this.isDuplicateId = true;
+      }
+    },
     async onSubmit() {
-      console.log('on sumbit');
+      if (!this.enableSubmit) {
+        return;
+      }
+      const payload = {
+        username: this.form.id,
+        password: this.form.password,
+        name: this.form.name,
+        email: this.form.email,
+      };
+      try {
+        await signUp(payload);
+        alert('회원가입이 완료되었습니다.');
+        this.$router.push('/sign-in');
+      } catch (error) {
+        console.log(error);
+      }
     },
   },
 };
