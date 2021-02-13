@@ -1,8 +1,25 @@
 <template>
   <div>
-    <b-card :title="post.title" :sub-title="String(post.userId)">
-      <b-card-text>{{ post.body }}</b-card-text>
-    </b-card>
+    <vs-card>
+      <template #title>
+        <h3>{{ post.title }} - {{ String(post.userId) }}</h3>
+      </template>
+      <template #img>
+        <img src="/foto5.png" alt="" />
+      </template>
+      <template #text>
+        <p>{{ post.body }}</p>
+      </template>
+      <template #interactions>
+        <vs-button danger icon>
+          <i class="bx bx-heart"></i>
+        </vs-button>
+        <vs-button class="btn-chat" shadow primary>
+          <i class="bx bx-chat"></i>
+          <span class="span"> 54 </span>
+        </vs-button>
+      </template>
+    </vs-card>
     <br />
   </div>
 </template>
