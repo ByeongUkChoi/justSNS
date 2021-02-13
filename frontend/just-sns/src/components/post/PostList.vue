@@ -1,9 +1,6 @@
 <template>
   <div>
-    <div v-if="isLoading" class="text-center">
-      <b-spinner label="Spinning"></b-spinner>
-    </div>
-    <div v-else-if="posts.length === 0">No posts are here... yet.</div>
+    <div v-if="posts.length === 0">No posts are here... yet.</div>
     <div v-else>
       <PostItem v-for="post in posts" :key="post.id" :post="post"></PostItem>
     </div>
@@ -20,7 +17,6 @@ export default {
   },
   data() {
     return {
-      posts: [],
       // TODO: test
       // posts: [
       //   {
@@ -36,7 +32,7 @@ export default {
       //     body: 'body323',
       //   },
       // ],
-      isLoading: false,
+      posts: [],
     };
   },
   mounted() {
@@ -45,11 +41,17 @@ export default {
   computed: {},
   methods: {
     async fetchData() {
-      this.isLoading = true;
+      const loading = this.$vs.loading();
       const posts = await fetchPosts();
-      this.isLoading = false;
+      loading.close();
       console.log(posts);
     },
+    // openLoading() {
+    //   const loading = this.$vs.loading();
+    //   setTimeout(() => {
+    //     loading.close();
+    //   }, 3000);
+    // },
   },
 };
 </script>
