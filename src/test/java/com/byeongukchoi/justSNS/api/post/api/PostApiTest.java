@@ -5,10 +5,12 @@ import com.byeongukchoi.justSNS.post.dto.PostDto;
 import com.byeongukchoi.justSNS.post.service.PostService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.restdocs.AutoConfigureRestDocs;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
+import org.springframework.restdocs.payload.JsonFieldType;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
@@ -20,11 +22,17 @@ import java.util.List;
 import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.mock;
+import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.document;
+import static org.springframework.restdocs.payload.PayloadDocumentation.fieldWithPath;
+import static org.springframework.restdocs.payload.PayloadDocumentation.responseFields;
 import static org.springframework.test.util.ReflectionTestUtils.setField;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
 
 @SpringBootTest
 @AutoConfigureMockMvc
+@AutoConfigureRestDocs
 @WithMockUser
 public class PostApiTest {
     @Autowired
@@ -55,7 +63,18 @@ public class PostApiTest {
                         .accept(MediaType.APPLICATION_JSON)
         );
 
-        // TODO: then. 도큐멘트 추가
-//        result.andExpect(status().isOk()).andDo(document());
+        // then
+        result.andExpect(status().isOk())
+                .andDo(document("get-posts",
+                        responseFields(
+                                fieldWithPath("item").type(JsonFieldType.ARRAY).description("posts"),
+                                // TODO: item.
+//                                fieldWithPath("item.xxx").type(JsonFieldType.ARRAY).description("posts"),
+                                fieldWithPath("page").type(JsonFieldType.OBJECT).description("page"),
+                                fieldWithPath("page.number").type(JsonFieldType.NUMBER).description("page number"),
+                                fieldWithPath("page.size").type(JsonFieldType.NUMBER).description("page size"),
+                                fieldWithPath("page.totalElements").type(JsonFieldType.NUMBER).description("page total count")
+                        )
+                ));
     }
 }
