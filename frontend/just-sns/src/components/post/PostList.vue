@@ -2,7 +2,12 @@
   <div>
     <div v-if="posts.length === 0">No posts are here... yet.</div>
     <div v-else>
-      <PostItem v-for="post in posts" :key="post.id" :post="post"></PostItem>
+      <PostItem
+        class="center"
+        v-for="post in posts"
+        :key="post.id"
+        :post="post"
+      ></PostItem>
     </div>
   </div>
 </template>
@@ -18,21 +23,21 @@ export default {
   data() {
     return {
       // TODO: test
-      // posts: [
-      //   {
-      //     id: 1,
-      //     userId: 'abc',
-      //     title: 'tt',
-      //     body: 'body',
-      //   },
-      //   {
-      //     id: 2,
-      //     userId: '22',
-      //     title: 'tt3',
-      //     body: 'body323',
-      //   },
-      // ],
-      posts: [],
+      posts: [
+        {
+          id: 1,
+          userId: 'abc',
+          title: 'tt',
+          body: 'body',
+        },
+        {
+          id: 2,
+          userId: '22',
+          title: 'tt3',
+          body: 'body323',
+        },
+      ],
+      // posts: [],
     };
   },
   mounted() {
