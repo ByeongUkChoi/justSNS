@@ -1,31 +1,15 @@
 <template>
-  <b-container>
-    <b-form @submit.prevent="onSubmit" @reset="onReset" v-if="show">
-      <b-form-group
-        label="Post a new post"
-        description="Please post a new post."
-      >
-        <b-form-textarea
-          id="textarea"
-          v-model="text"
-          placeholder="Enter something..."
-          rows="3"
-          max-rows="6"
-          required
-        ></b-form-textarea>
-      </b-form-group>
-
-      <b-button pill type="submit" variant="outline-primary">Submit</b-button
-      >&nbsp;
-      <b-button pill type="reset" variant="outline-danger">Reset</b-button>
-    </b-form>
-  </b-container>
+  <PostAddForm></PostAddForm>
 </template>
 
 <script>
+import PostAddForm from '@/components/post/PostAddForm';
 import axios from 'axios';
 
 export default {
+  components: {
+    PostAddForm,
+  },
   data() {
     return {
       text: '',
