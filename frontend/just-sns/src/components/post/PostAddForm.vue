@@ -1,5 +1,12 @@
 <template>
-  <Editor :options="editorOptions" :initialEditType="initialEditType"></Editor>
+  <div>
+    <Editor
+      ref="toastuiEditor"
+      :options="editorOptions"
+      :initialEditType="initialEditType"
+    ></Editor>
+    <vs-button @click="submit">submit</vs-button>
+  </div>
 </template>
 
 <script>
@@ -21,6 +28,15 @@ export default {
         toolbarItems: ['image'],
       },
     };
+  },
+  methods: {
+    getHtml() {
+      let html = this.$refs.toastuiEditor.invoke('getHtml');
+      console.log(html);
+    },
+    submit() {
+      this.getHtml();
+    },
   },
 };
 </script>
