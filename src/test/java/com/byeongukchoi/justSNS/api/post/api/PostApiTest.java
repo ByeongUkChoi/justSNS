@@ -12,9 +12,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.restdocs.payload.JsonFieldType;
-import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.RequestBuilder;
 import org.springframework.test.web.servlet.ResultActions;
 
 import java.time.ZonedDateTime;
@@ -34,9 +32,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 
 @SpringBootTest
-@AutoConfigureMockMvc
+@AutoConfigureMockMvc(addFilters = false)
 @AutoConfigureRestDocs
-@WithMockUser
 public class PostApiTest {
     @Autowired
     private MockMvc mockMvc;
@@ -80,14 +77,12 @@ public class PostApiTest {
                         )
                 ));
     }
-//    @Test
+    @Test
     public void addPost() throws Exception {
         // given
-        PostDto.Create postCreateDto = mock(PostDto.Create.class);
+        PostDto.Create postCreateDto = new PostDto.Create();
         setField(postCreateDto, "content", "This is content");
-        // TODO: dto -> json string
         ObjectMapper objectMapper = new ObjectMapper();
-        String s = objectMapper.writeValueAsString(postCreateDto);
         // when
         ResultActions result = mockMvc.perform(
                 post("/posts")
