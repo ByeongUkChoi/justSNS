@@ -4,8 +4,11 @@ server:
 spring:
   datasource:
     url: jdbc:h2:mem:testdb
-
   jpa:
     properties:
       hibernate:
         show_sql: true
+  web:
+    resources:
+      static-locations:
+        - file:src/main/resources/static

@@ -10,7 +10,7 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
 @RestController
 public class RootController {
-    @GetMapping("/")
+    @GetMapping("/api")
     public RepresentationModel root() {
 
         RepresentationModel model = new RepresentationModel();

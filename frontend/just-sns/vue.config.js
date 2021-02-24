@@ -4,4 +4,5 @@ module.exports = {
     overlay: false,
     port: process.env.VUE_APP_PORT || 3000,
   },
+  outputDir: path.resolve(__dirname, '../../src/main/resources/static'),
 };

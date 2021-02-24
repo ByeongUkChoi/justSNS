@@ -61,6 +61,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS) // 세션을 사용하지 않음
                 .and()
             .authorizeRequests()
+                .antMatchers("/")
+                    .permitAll()
                 .antMatchers("/h2-console/**")
                     .permitAll()
                 .antMatchers("/auth/signup", "/auth/signin", "/auth/check-username/*")
